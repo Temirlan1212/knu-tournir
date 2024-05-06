@@ -4,6 +4,7 @@ import "./globals.css";
 import { NextIntlClientProviderWrapper } from "../providers/next-intl-provider";
 import { ThemeProvider } from "next-themes";
 import { Themes } from "@/shared/constants/theme";
+import { DashboardHeader, Header } from "@/widgets/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,7 +33,11 @@ export default function RootLayout({
           themes={Themes}
         >
           <NextIntlClientProviderWrapper locale={locale}>
-            {children}
+            <div className="h-full">
+              {/* <Header /> */}
+              <DashboardHeader />
+              {children}
+            </div>
           </NextIntlClientProviderWrapper>
         </ThemeProvider>
       </body>
