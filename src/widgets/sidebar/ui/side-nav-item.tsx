@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { cn } from "@/shared/lib/classnames";
 import { useSidebar } from "../model/store/sidebar.store";
 import { buttonVariants } from "@/ui/button";
@@ -16,6 +15,7 @@ import {
 import { INavItem } from "../model/types/sidebar";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/shared/ui/tooltip";
 import { useIsMounted } from "@/shared/lib/hooks/useIsMounted";
+import { usePathname } from "@/shared/config/i18n";
 
 type ClassNameType = HTMLAttributes<HTMLHtmlElement>["className"];
 
