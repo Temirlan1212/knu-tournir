@@ -7,10 +7,7 @@ export default function Header() {
   return (
     <div className="block supports-backdrop-blur:bg-background/60 border-b bg-background/95 backdrop-blur">
       <nav className="flex h-12 items-center justify-between px-6">
-        <Link
-          href={"/"}
-          className="hidden items-center justify-between gap-2 md:flex"
-        >
+        <Link href={"/"}>
           <Logo />
         </Link>
 
@@ -18,7 +15,7 @@ export default function Header() {
           <ThemeToggle />
 
           <Link href="sign-in">
-            <Button variant="ghost">Войти</Button>
+            <Button variant="defaultGhost">Войти</Button>
           </Link>
         </div>
       </nav>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ThemeToggle } from "./theme-toggle";
 import Logo from "@/shared/ui/logo";
 import { UserNav } from "@/entities/user";
+import { MobileSidebar } from "@/widgets/sidebar";
 
 export default function DashboardHeader() {
   return (
@@ -14,9 +15,11 @@ export default function DashboardHeader() {
           <Logo />
         </Link>
 
-        <div className="flex items-center gap-2">
-          <ThemeToggle />
+        <div className="md:hidden flex">
+          <MobileSidebar />
+        </div>
 
+        <div className="flex items-center gap-2">
           <UserNav />
         </div>
       </nav>

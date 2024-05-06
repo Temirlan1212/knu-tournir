@@ -5,6 +5,8 @@ import { NextIntlClientProviderWrapper } from "../providers/next-intl-provider";
 import { ThemeProvider } from "next-themes";
 import { Themes } from "@/shared/constants/theme";
 import { DashboardHeader, Header } from "@/widgets/header";
+import { TooltipProvider } from "@/shared/ui/tooltip";
+import { Sidebar } from "@/widgets/sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,13 +34,11 @@ export default function RootLayout({
           enableSystem
           themes={Themes}
         >
-          <NextIntlClientProviderWrapper locale={locale}>
-            <div className="h-full">
-              {/* <Header /> */}
-              <DashboardHeader />
+          <TooltipProvider>
+            <NextIntlClientProviderWrapper locale={locale}>
               {children}
-            </div>
-          </NextIntlClientProviderWrapper>
+            </NextIntlClientProviderWrapper>
+          </TooltipProvider>
         </ThemeProvider>
       </body>
     </html>

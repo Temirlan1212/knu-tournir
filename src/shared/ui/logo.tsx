@@ -1,5 +1,6 @@
 import React, { PropsWithChildren } from "react";
 import Image from "next/image";
+import LogoPath from "@/public/logo.svg";
 
 interface LogoProps {
   className?: string;
@@ -12,7 +13,7 @@ export default function Logo({
   return (
     <div className="flex gap-2 items-center">
       <Image
-        src={"../logo.svg"}
+        src={LogoPath}
         width={50}
         height={30}
         className={className}
