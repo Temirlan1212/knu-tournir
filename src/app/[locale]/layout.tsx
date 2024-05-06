@@ -4,9 +4,7 @@ import "./globals.css";
 import { NextIntlClientProviderWrapper } from "../providers/next-intl-provider";
 import { ThemeProvider } from "next-themes";
 import { Themes } from "@/shared/constants/theme";
-import { DashboardHeader, Header } from "@/widgets/header";
 import { TooltipProvider } from "@/shared/ui/tooltip";
-import { Sidebar } from "@/widgets/sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
