@@ -1,5 +1,6 @@
-import { HomePage } from "@/pages/public/home";
+import { redirect } from "next/navigation";
+import { defaultLocale } from "@/shared/config/i18n";
 
-export default function Home() {
-  return <HomePage />;
+export default function RootPage() {
+  redirect(defaultLocale);
 }
