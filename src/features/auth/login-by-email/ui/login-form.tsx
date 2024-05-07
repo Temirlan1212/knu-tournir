@@ -26,7 +26,7 @@ export default function LoginForm({ onSubmit, ...form }: LoginFormProps) {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input placeholder="Почта или телефон" {...field} />
+                      <Input placeholder="Почта или телефон *" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -43,7 +43,7 @@ export default function LoginForm({ onSubmit, ...form }: LoginFormProps) {
                     <FormControl>
                       <Input
                         id="password"
-                        placeholder="Пароль"
+                        placeholder="Пароль *"
                         type="password"
                         color="error"
                         {...field}
