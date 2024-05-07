@@ -11,7 +11,9 @@ export default function NotFound() {
       <body className="px-5 py-5 h-[100dvh] flex items-center justify-center">
         <div className="flex flex-col justify-center items-center gap-2">
           <h1 className="text-[30px]">Страница не найдена</h1>
-          <Button onClick={returnBack}>Вернуться назад</Button>
+          <Button size="lg" onClick={returnBack}>
+            Вернуться назад
+          </Button>
         </div>
       </body>
     </html>
