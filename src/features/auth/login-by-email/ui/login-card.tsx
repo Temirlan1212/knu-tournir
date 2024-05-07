@@ -30,7 +30,7 @@ export default function LoginCard() {
 
   async function onSubmit(data: LoginDto) {
     setLoading("loading");
-
+    router.push("/dashboard/manage");
     setLoading("loaded");
   }
 

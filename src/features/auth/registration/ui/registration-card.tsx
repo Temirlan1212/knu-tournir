@@ -33,7 +33,7 @@ export default function LoginCard() {
 
   async function onSubmit(data: RegistrationDto) {
     setLoading("loading");
-
+    router.push("/dashboard/manage");
     setLoading("loaded");
   }
 
