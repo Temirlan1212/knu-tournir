@@ -6,6 +6,7 @@ import { ThemeProvider } from "next-themes";
 import { Themes } from "@/shared/constants/theme";
 import { TooltipProvider } from "@/shared/ui/tooltip";
 import { NextTopLoader } from "@/widgets/next-top-loader";
+import { Toaster } from "@/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ interface RootLayoutProps {
     locale: string;
   };
 }
+
 export default function RootLayout({
   children,
   params: { locale },
@@ -37,6 +39,7 @@ export default function RootLayout({
             <NextIntlClientProviderWrapper locale={locale}>
               <NextTopLoader />
               {children}
+              <Toaster />
             </NextIntlClientProviderWrapper>
           </TooltipProvider>
         </ThemeProvider>
