@@ -1,1 +1,2 @@
-export { default as HomePage } from "./ui/home";
+import HomePage from "./ui/home";
+export default HomePage;

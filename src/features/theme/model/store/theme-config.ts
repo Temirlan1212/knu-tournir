@@ -6,8 +6,8 @@ export const useThemeConfig = create<ThemeConfigStore>()(
   persist(
     (set, get) => ({
       config: {
-        light: "light",
-        dark: "dark",
+        light: "slate-light",
+        dark: "slate-dark",
       },
       updateConfig: (config) => {
         set({

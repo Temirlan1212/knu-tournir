@@ -85,7 +85,7 @@
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 221.2 83.2% 53.3%;
-    --radius: 0.5rem;
+    --radius: 14px;
   }
 
   .blue-dark {
@@ -130,7 +130,7 @@
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
     --ring: 142.1 76.2% 36.3%;
-    --radius: 0.5rem;
+    --radius: 14px;
   }
 
   .green-dark {
@@ -175,7 +175,7 @@
     --border: 20 5.9% 90%;
     --input: 20 5.9% 90%;
     --ring: 24.6 95% 53.1%;
-    --radius: 0.5rem;
+    --radius: 14px;
   }
 
   .orange-dark {
@@ -220,7 +220,7 @@
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
     --ring: 346.8 77.2% 49.8%;
-    --radius: 0.5rem;
+    --radius: 14px;
   }
 
   .rose-dark {
@@ -265,7 +265,7 @@
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
+    --radius: 14px;
   }
 
   .slate-dark {
