@@ -3,32 +3,35 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import LoginForm from "./login-form";
-import { useLoginStore } from "../model/store/login";
-import { selectLoginSetLoading } from "../model/selectors/login";
-import { LoginDto } from "../model/types/login-schema";
-import { loginDto } from "../model/dto/login";
+import RegistrationForm from "./registration-form";
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/ui/tabs";
 import { Card, CardHeader, CardTitle } from "@/shared/ui/card";
-import Logo from "@/shared/ui/logo";
+import { useRegistrationStore } from "../model/store/registration";
+import { selectRegistrationSetLoading } from "../model/selectors/registration";
+import { RegistrationDto } from "../model/types/registration";
+import { registrationDto } from "../model/dto/registration";
 import Link from "next/link";
-import { Button } from "@/shared/ui/button";
+import Logo from "@/shared/ui/logo";
 
 export default function LoginCard() {
-  const setLoading = useLoginStore(selectLoginSetLoading);
+  const setLoading = useRegistrationStore(selectRegistrationSetLoading);
 
   const router = useRouter();
-  const form = useForm<LoginDto>({
-    resolver: zodResolver(loginDto),
+  const form = useForm<RegistrationDto>({
+    resolver: zodResolver(registrationDto),
     defaultValues: {
       inputEmail: "",
       inputPassword: "",
+      inputName: "",
+      inputPhone: "",
+      inputPasswordConfirm: "",
     },
   });
 
   const { setError } = form;
 
-  async function onSubmit(data: LoginDto) {
+  async function onSubmit(data: RegistrationDto) {
     setLoading("loading");
 
     setLoading("loaded");
@@ -39,10 +42,10 @@ export default function LoginCard() {
   return (
     <Tabs
       onValueChange={handleTab}
-      defaultValue="login"
+      defaultValue="register"
       className="max-w-[400px]"
     >
-      <Card className="relative px-[20px] sm:px-[40px] py-[40px] min-h-[440px] max-h-[700px] shadow-none border-none overflow-y-auto">
+      <Card className="px-[20px] sm:px-[40px] py-[40px] min-h-[500px] max-h-[700px] shadow-none border-none overflow-y-auto">
         <CardHeader className="px-0 pt-0">
           <Link href={"/"} className="w-full flex justify-center">
             <Logo />
@@ -55,8 +58,8 @@ export default function LoginCard() {
           <TabsTrigger value="login">Вход</TabsTrigger>
           <TabsTrigger value="register">Регистрация</TabsTrigger>
         </TabsList>
-        <TabsContent value="login" className="pt-5">
-          <LoginForm {...form} onSubmit={onSubmit} />
+        <TabsContent value="register" className="pt-5">
+          <RegistrationForm {...form} onSubmit={onSubmit} />
         </TabsContent>
       </Card>
     </Tabs>

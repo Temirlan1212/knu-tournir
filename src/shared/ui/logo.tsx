@@ -11,7 +11,7 @@ export default function Logo({
   children,
 }: PropsWithChildren<LogoProps>) {
   return (
-    <div className="flex gap-2 items-center">
+    <div className="flex gap-2 items-center min-w-[50px] min-h-[30px]">
       <Image
         src={LogoPath}
         width={50}

@@ -22,7 +22,7 @@ export default function LoginForm({ onSubmit, ...form }: LoginFormProps) {
             <div className="grid gap-2">
               <FormField
                 control={form.control}
-                name="mail"
+                name="inputEmail"
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
@@ -37,7 +37,7 @@ export default function LoginForm({ onSubmit, ...form }: LoginFormProps) {
             <div className="grid gap-2">
               <FormField
                 control={form.control}
-                name="password"
+                name="inputPassword"
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
