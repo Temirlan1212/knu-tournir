@@ -42,7 +42,7 @@ export default function LoginCard() {
       defaultValue="login"
       className="max-w-[400px]"
     >
-      <Card className="relative px-[20px] sm:px-[40px] py-[40px] min-h-[480px] max-h-[700px] shadow-none border-none overflow-y-auto">
+      <Card className="relative px-[20px] sm:px-[40px] py-[40px] min-h-[480px] max-h-[90dvh] shadow-none border-none overflow-y-auto">
         <CardHeader className="px-0 pt-0">
           <Link href={"/"} className="w-full flex justify-center">
             <Logo />
