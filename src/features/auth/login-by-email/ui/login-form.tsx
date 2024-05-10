@@ -17,8 +17,11 @@ export default function LoginForm({ onSubmit, ...form }: LoginFormProps) {
   return (
     <>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
-          <CardContent className="px-0 flex flex-col gap-2 pb-2">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex flex-col gap-4"
+        >
+          <CardContent className="px-0 flex flex-col gap-2 pt-0 pb-2">
             <div className="grid gap-2">
               <FormField
                 control={form.control}
@@ -54,18 +57,6 @@ export default function LoginForm({ onSubmit, ...form }: LoginFormProps) {
                 )}
               />
             </div>
-
-            <div className="flex justify-end">
-              <Link href="/password-forgot">
-                <Button
-                  type="button"
-                  variant="link"
-                  className="font-normal text-muted-foreground p-0 underline"
-                >
-                  Забыл пароль
-                </Button>
-              </Link>
-            </div>
           </CardContent>
           <CardFooter className="p-0 flex flex-col gap-2">
             <Button
@@ -76,14 +67,16 @@ export default function LoginForm({ onSubmit, ...form }: LoginFormProps) {
             >
               Войти через почту
             </Button>
-            <Button
-              type="button"
-              variant="defaultGhost"
-              className="w-full"
-              size="lg"
-            >
-              Войти по номеру телефона
-            </Button>
+            <Link href="/password-forgot" className="w-full">
+              <Button
+                type="button"
+                variant="ghost"
+                className="w-full text-muted-foreground"
+                size="lg"
+              >
+                Забыли пароль?
+              </Button>
+            </Link>
           </CardFooter>
         </form>
       </Form>

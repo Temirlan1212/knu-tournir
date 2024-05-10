@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/ui/button";
-import { CardContent, CardFooter } from "@/ui/card";
+import { CardContent, CardDescription, CardFooter } from "@/ui/card";
 import { Input } from "@/ui/input";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/ui/form";
 import {
@@ -9,6 +9,7 @@ import {
 } from "../model/types/registration";
 import { useRegistrationStore } from "../model/store/registration";
 import { selectRegistrationLoading } from "../model/selectors/registration";
+import Link from "next/link";
 
 interface RegistrationFormProps extends RegistrationFormReturn {
   onSubmit: (v: RegistrationDto) => void;
@@ -122,6 +123,13 @@ export default function RegistrationForm({
               Зарегистрироваться
             </Button>
           </CardFooter>
+          <CardDescription className="text-center">
+            Нажимая на кнопку «Зарегистрироваться», вы соглашаетесь с{" "}
+            <Link href={""} className="text underline">
+              условиями
+            </Link>{" "}
+            обработки персональных данных
+          </CardDescription>
         </form>
       </Form>
     </>
