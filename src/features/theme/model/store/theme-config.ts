@@ -1,13 +1,14 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { ThemeConfigStore } from "../types/theme-config";
+import { DefaultThemes } from "@/shared/constants/theme";
 
 export const useThemeConfig = create<ThemeConfigStore>()(
   persist(
     (set, get) => ({
       config: {
-        light: "slate-light",
-        dark: "slate-dark",
+        light: DefaultThemes["light"],
+        dark: DefaultThemes["dark"],
       },
       updateConfig: (config) => {
         set({

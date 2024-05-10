@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { NextIntlClientProviderWrapper } from "../providers/next-intl-provider";
 import { ThemeProvider } from "next-themes";
-import { Themes } from "@/shared/constants/theme";
+import { DefaultThemes, Themes, ThemesEnum } from "@/shared/constants/theme";
 import { TooltipProvider } from "@/shared/ui/tooltip";
 import { NextTopLoader } from "@/widgets/next-top-loader";
 import { Toaster } from "@/ui/toaster";
@@ -31,7 +31,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme={DefaultThemes["light"]}
           enableSystem
           themes={Themes}
         >

@@ -23,6 +23,11 @@ export const ThemesEnum = {
   ...DarkThemesEnum,
 } as const;
 
+export const DefaultThemes = {
+  ["light"]: ThemesEnum.BLUE_DARK,
+  ["dark"]: ThemesEnum.BLUE_LIGHT,
+} as const;
+
 export const Themes: ThemeProviderProps["themes"] = Object.values(ThemesEnum);
 
 export const ThemesData = [

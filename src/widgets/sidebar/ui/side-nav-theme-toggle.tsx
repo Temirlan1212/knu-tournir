@@ -1,21 +1,15 @@
 "use client";
 import { Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
 import { NavItem, NavItemProps } from "./side-nav-item";
 import { cn } from "@/shared/lib/classnames";
 import { ThemesEnum } from "@/shared/constants/theme";
-import { selectThemeConfig, useThemeConfig } from "@/features/theme";
+import { useToggleTheme } from "@/features/theme";
 
 export function SideNavThemeToggle({ className, ...props }: NavItemProps) {
-  const { setTheme, theme } = useTheme();
-  const mode = useThemeConfig(selectThemeConfig);
-  const dark = mode.dark || "dark";
-  const light = mode.light || "light";
-
-  const toggle = () => setTheme(theme === light ? dark : light);
+  const { toggleTheme, theme } = useToggleTheme();
 
   return (
-    <div onClick={toggle}>
+    <div onClick={toggleTheme}>
       <NavItem
         {...props}
         item={{
