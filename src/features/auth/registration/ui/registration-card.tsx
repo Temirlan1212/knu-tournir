@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import RegistrationForm from "./registration-form";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/ui/tabs";
-import { Card, CardHeader, CardTitle } from "@/shared/ui/card";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/shared/ui/card";
 import { useRegistrationStore } from "../model/store/registration";
 import { selectRegistrationSetLoading } from "../model/selectors/registration";
 import { RegistrationDto } from "../model/types/registration";
@@ -53,6 +53,9 @@ export default function LoginCard() {
           <CardTitle className="text-2xl text-center">
             Вход или регистрация
           </CardTitle>
+          <CardDescription className="text-center">
+            Для продолжения необходимо войти в аккаунт
+          </CardDescription>
         </CardHeader>
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="login">Вход</TabsTrigger>
