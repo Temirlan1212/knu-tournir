@@ -14,7 +14,13 @@ import { registrationDto } from "../model/dto/registration";
 import Link from "next/link";
 import Logo from "@/shared/ui/logo";
 
-export default function LoginCard() {
+interface RegistrationCardProps {
+  onSubmitSuccess?: () => void;
+}
+
+export default function RegistrationCard({
+  onSubmitSuccess,
+}: RegistrationCardProps) {
   const setLoading = useRegistrationStore(selectRegistrationSetLoading);
 
   const router = useRouter();
@@ -33,7 +39,7 @@ export default function LoginCard() {
 
   async function onSubmit(data: RegistrationDto) {
     setLoading("loading");
-    router.push("/dashboard/manage");
+    onSubmitSuccess && onSubmitSuccess();
     setLoading("loaded");
   }
 

@@ -1,5 +1,5 @@
-import { RegistrationCard } from "@/features/auth";
+import RegistrationPage from "@/pages/public/registration";
 
 export default function Register() {
-  return <RegistrationCard />;
+  return <RegistrationPage />;
 }

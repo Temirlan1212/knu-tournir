@@ -1,8 +1,13 @@
+import { cn } from "@/shared/lib/classnames";
 import { Button, ButtonProps } from "@/shared/ui/button";
-import { ArrowLeft } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-export default function NavigateBackIcon(props: ButtonProps) {
+export default function NavigateBackIcon({
+  children,
+  className,
+  ...props
+}: ButtonProps) {
   const router = useRouter();
   const navigateBack = () => router.back();
   return (
@@ -10,9 +15,11 @@ export default function NavigateBackIcon(props: ButtonProps) {
       size="icon"
       variant="defaultGhost"
       onClick={navigateBack}
+      className={cn("flex gap-2", className)}
       {...props}
     >
-      <ArrowLeft />
+      <ChevronLeft />
+      <p>{children}</p>
     </Button>
   );
 }
