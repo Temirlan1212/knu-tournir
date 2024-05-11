@@ -4,15 +4,13 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import RegistrationForm from "./registration-form";
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/ui/tabs";
-import { Card, CardDescription, CardHeader, CardTitle } from "@/shared/ui/card";
+import { Card } from "@/shared/ui/card";
 import { useRegistrationStore } from "../model/store/registration";
 import { selectRegistrationSetLoading } from "../model/selectors/registration";
 import { RegistrationDto } from "../model/types/registration";
 import { registrationDto } from "../model/dto/registration";
-import Link from "next/link";
-import Logo from "@/shared/ui/logo";
+import { AuthCardHeader } from "@/entities/auth-card-header";
 
 interface RegistrationCardProps {
   onSubmitSuccess?: () => void;
@@ -52,17 +50,10 @@ export default function RegistrationCard({
       className="max-w-[400px]"
     >
       <Card className="px-[20px] sm:px-[40px] py-[40px] min-h-[500px] max-h-[90dvh] shadow-none border-none overflow-y-auto">
-        <CardHeader className="px-0 pt-0">
-          <Link href={"/"} className="w-full flex justify-center">
-            <Logo />
-          </Link>
-          <CardTitle className="text-2xl text-center">
-            Вход или регистрация
-          </CardTitle>
-          <CardDescription className="text-center">
-            Для продолжения необходимо войти в аккаунт
-          </CardDescription>
-        </CardHeader>
+        <AuthCardHeader
+          title={<>Вход или регистрация</>}
+          description={<>Для продолжения необходимо войти в аккаунт</>}
+        />
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="login">Вход</TabsTrigger>
           <TabsTrigger value="register">Регистрация</TabsTrigger>
