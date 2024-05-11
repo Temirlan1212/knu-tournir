@@ -6,3 +6,10 @@ export const selectRegistrationProcessesProcess = (
 export const selectRegistrationProcessesSetProcess = (
   state: RegistrationProcessesStoreProps
 ) => state.setProcess;
+
+export const selectRegistrationProcessesNext = (
+  state: RegistrationProcessesStoreProps
+) => state.next;
+export const selectRegistrationProcessesPrev = (
+  state: RegistrationProcessesStoreProps
+) => state.prev;

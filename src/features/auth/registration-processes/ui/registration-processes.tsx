@@ -5,24 +5,22 @@ import { useRegistrationProcessesStore } from "../model/store/registration-proce
 import { ConfirmEmailCard } from "@/features/auth/confirm-email";
 import { cn } from "@/shared/lib/classnames";
 import {
+  selectRegistrationProcessesNext,
+  selectRegistrationProcessesPrev,
   selectRegistrationProcessesProcess,
-  selectRegistrationProcessesSetProcess,
 } from "../model/selectors/registration-processes";
-import { useRouter } from "next/navigation";
 import { RegistrationProcessesEnum } from "../model/constants/registration-processes";
 
 export default function RegistrationProcesses() {
-  const router = useRouter();
   const process = useRegistrationProcessesStore(
     selectRegistrationProcessesProcess
   );
 
-  const setProcess = useRegistrationProcessesStore(
-    selectRegistrationProcessesSetProcess
-  );
+  const next = useRegistrationProcessesStore(selectRegistrationProcessesNext);
+  const prev = useRegistrationProcessesStore(selectRegistrationProcessesPrev);
 
   const handleSignupSuccess = () => {
-    setProcess(RegistrationProcessesEnum.SECOND);
+    next();
   };
 
   return (
@@ -39,7 +37,7 @@ export default function RegistrationProcesses() {
           process !== RegistrationProcessesEnum.SECOND ? "hidden" : "block"
         )}
       >
-        <ConfirmEmailCard />
+        <ConfirmEmailCard onBack={prev} />
       </div>
     </div>
   );

@@ -7,7 +7,11 @@ import { Card, CardContent, CardFooter } from "@/shared/ui/card";
 import { Mail } from "lucide-react";
 import Link from "next/link";
 
-export default function ConfirmEmailCard() {
+export interface ConfirmEmailCardProps {
+  onBack?: () => void;
+}
+
+export default function ConfirmEmailCard({ onBack }: ConfirmEmailCardProps) {
   return (
     <Card className="relative px-[20px] sm:px-[40px] py-[40px] min-h-[480px] max-h-[90dvh] shadow-none border-none overflow-y-auto flex flex-col justify-between">
       <AuthCardHeader
@@ -29,7 +33,12 @@ export default function ConfirmEmailCard() {
       </CardContent>
       <CardFooter className="p-0 flex flex-col gap-2">
         <CountdownButton className="w-full">Отправить повторно</CountdownButton>
-        <NavigateBackIcon className="w-full" size="lg" variant="ghost">
+        <NavigateBackIcon
+          className="w-full"
+          size="lg"
+          variant="ghost"
+          onClick={onBack}
+        >
           Вернуться назад
         </NavigateBackIcon>
       </CardFooter>

@@ -6,15 +6,17 @@ import { useRouter } from "next/navigation";
 export default function NavigateBackIcon({
   children,
   className,
+  onClick,
   ...props
 }: ButtonProps) {
   const router = useRouter();
-  const navigateBack = () => router.back();
   return (
     <Button
       size="icon"
       variant="defaultGhost"
-      onClick={navigateBack}
+      onClick={(e) => {
+        onClick ? onClick(e) : router.back();
+      }}
       className={cn("flex gap-2", className)}
       {...props}
     >
