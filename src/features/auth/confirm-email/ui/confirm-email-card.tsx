@@ -13,7 +13,7 @@ export interface ConfirmEmailCardProps {
 
 export default function ConfirmEmailCard({ onBack }: ConfirmEmailCardProps) {
   return (
-    <Card className="relative px-[20px] sm:px-[40px] py-[40px] min-h-[480px] max-h-[90dvh] shadow-none border-none overflow-y-auto flex flex-col justify-between">
+    <Card className="relative px-[20px] max-w-[400px] sm:px-[40px] py-[40px] min-h-[480px] max-h-[90dvh] shadow-none border-none overflow-y-auto flex flex-col justify-between">
       <AuthCardHeader
         title={<>Подтвердите почту</>}
         description={

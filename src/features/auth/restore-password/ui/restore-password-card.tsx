@@ -35,7 +35,7 @@ export default function RestorePassword({
   }
 
   return (
-    <Card className="relative px-[20px] sm:px-[40px] py-[40px] min-h-[400px] max-h-[90dvh] shadow-none border-none overflow-y-auto flex flex-col justify-between gap-5">
+    <Card className="relative px-[20px] max-w-[400px] sm:px-[40px] py-[40px] min-h-[400px] max-h-[90dvh] shadow-none border-none overflow-y-auto flex flex-col justify-between gap-5">
       <AuthCardHeader
         title={<>Смена пароля</>}
         description={
