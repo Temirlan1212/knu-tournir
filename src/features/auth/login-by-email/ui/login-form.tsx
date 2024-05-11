@@ -67,7 +67,7 @@ export default function LoginForm({ onSubmit, ...form }: LoginFormProps) {
             >
               Войти через почту
             </Button>
-            <Link href="/password-forgot" className="w-full">
+            <Link href="/restore-password" className="w-full">
               <Button
                 type="button"
                 variant="ghost"
