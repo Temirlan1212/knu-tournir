@@ -10,8 +10,11 @@ import {
   selectRegistrationProcessesProcess,
 } from "../model/selectors/registration-processes";
 import { RegistrationProcessesEnum } from "../model/constants/registration-processes";
+import { useCountdownStore } from "@/entities/countdown-button/model/store/countdown";
 
 export default function RegistrationProcesses() {
+  const startCountdown = useCountdownStore((state) => state.startCountdown);
+
   const process = useRegistrationProcessesStore(
     selectRegistrationProcessesProcess
   );
@@ -20,6 +23,7 @@ export default function RegistrationProcesses() {
   const prev = useRegistrationProcessesStore(selectRegistrationProcessesPrev);
 
   const handleSignupSuccess = () => {
+    startCountdown();
     next();
   };
 
