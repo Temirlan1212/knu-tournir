@@ -1,17 +1,15 @@
 "use client";
 import { Button } from "@/ui/button";
 import { CardContent, CardFooter } from "@/ui/card";
-import { Input } from "@/ui/input";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@/ui/form";
+import { Form, FormField } from "@/ui/form";
 import { LoginDto, LoginFormReturn } from "../model/types/login-schema";
 import { useLoginStore } from "../model/store/login";
 import { selectLoginLoading } from "../model/selectors/login";
 import Link from "next/link";
-
+import { FormFloatingLabelInput } from "@/shared/ui/form-floating-label-input";
 interface LoginFormProps extends LoginFormReturn {
   onSubmit: (v: LoginDto) => void;
 }
-
 export default function LoginForm({ onSubmit, ...form }: LoginFormProps) {
   const loading = useLoginStore(selectLoginLoading);
   return (
@@ -26,34 +24,17 @@ export default function LoginForm({ onSubmit, ...form }: LoginFormProps) {
               <FormField
                 control={form.control}
                 name="inputEmail"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input placeholder="Почта или телефон *" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
+                render={(props) => (
+                  <FormFloatingLabelInput label="Почта *" {...props} />
                 )}
               />
             </div>
-
             <div className="grid gap-2">
               <FormField
                 control={form.control}
                 name="inputPassword"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input
-                        id="password"
-                        placeholder="Пароль *"
-                        type="password"
-                        color="error"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
+                render={(props) => (
+                  <FormFloatingLabelInput label="Пароль *" {...props} />
                 )}
               />
             </div>
