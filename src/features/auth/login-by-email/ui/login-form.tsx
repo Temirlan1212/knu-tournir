@@ -6,7 +6,10 @@ import { LoginDto, LoginFormReturn } from "../model/types/login-schema";
 import { useLoginStore } from "../model/store/login";
 import { selectLoginLoading } from "../model/selectors/login";
 import Link from "next/link";
-import { FormFloatingLabelInput } from "@/shared/ui/form-floating-label-input";
+import {
+  FormFloatingLabelInput,
+  FormFloatingPasswordLabelInput,
+} from "@/ui/form-floating-label-input";
 interface LoginFormProps extends LoginFormReturn {
   onSubmit: (v: LoginDto) => void;
 }
@@ -34,7 +37,7 @@ export default function LoginForm({ onSubmit, ...form }: LoginFormProps) {
                 control={form.control}
                 name="inputPassword"
                 render={(props) => (
-                  <FormFloatingLabelInput label="Пароль *" {...props} />
+                  <FormFloatingPasswordLabelInput label="Пароль *" {...props} />
                 )}
               />
             </div>

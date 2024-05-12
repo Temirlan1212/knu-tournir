@@ -35,6 +35,7 @@ const FloatingPasswordInput = React.forwardRef<
   const isError = variant === "destructive";
   return (
     <PasswordInput
+      placeholder={isError ? placeholder : ""}
       variant={variant}
       className={cn(
         "peer pt-[23px] pb-[5px] focus:pt-[23px] focus:pb-[5px] !placeholder-gray-600",

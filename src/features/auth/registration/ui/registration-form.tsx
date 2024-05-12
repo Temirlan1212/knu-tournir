@@ -9,7 +9,10 @@ import {
 import { useRegistrationStore } from "../model/store/registration";
 import { selectRegistrationLoading } from "../model/selectors/registration";
 import Link from "next/link";
-import { FormFloatingLabelInput } from "@/shared/ui/form-floating-label-input";
+import {
+  FormFloatingLabelInput,
+  FormFloatingPasswordLabelInput,
+} from "@/ui/form-floating-label-input";
 
 interface RegistrationFormProps extends RegistrationFormReturn {
   onSubmit: (v: RegistrationDto) => void;
@@ -62,12 +65,7 @@ export default function RegistrationForm({
                 control={form.control}
                 name="inputPassword"
                 render={(props) => (
-                  <FormFloatingLabelInput
-                    id="password"
-                    type="password"
-                    label="Пароль *"
-                    {...props}
-                  />
+                  <FormFloatingPasswordLabelInput label="Пароль *" {...props} />
                 )}
               />
             </div>
@@ -77,9 +75,7 @@ export default function RegistrationForm({
                 control={form.control}
                 name="inputPasswordConfirm"
                 render={(props) => (
-                  <FormFloatingLabelInput
-                    id="password"
-                    type="password"
+                  <FormFloatingPasswordLabelInput
                     label="Повторите пароль *"
                     {...props}
                   />
