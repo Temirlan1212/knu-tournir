@@ -24,8 +24,8 @@ export const ThemesEnum = {
 } as const;
 
 export const DefaultThemes = {
-  ["light"]: ThemesEnum.BLUE_DARK,
-  ["dark"]: ThemesEnum.BLUE_LIGHT,
+  ["light"]: ThemesEnum.BLUE_LIGHT,
+  ["dark"]: ThemesEnum.BLUE_DARK,
 } as const;
 
 export const Themes: ThemeProviderProps["themes"] = Object.values(ThemesEnum);
