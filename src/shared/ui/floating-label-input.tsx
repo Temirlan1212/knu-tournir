@@ -44,7 +44,7 @@ const FloatingLabel = React.forwardRef<
         "peer-focus:secondary peer-focus:dark:secondary",
         placeholderShown && "max-w-[310px] top-1/2 -translate-y-1/2 scale-100",
         isError &&
-          "!top-[18px] !scale-75 !-translate-y-4 text-destructive !max-w-[420px]",
+          "top-[18px] scale-75 -translate-y-4 text-destructive max-w-[420px]",
         className
       )}
       ref={ref}
