@@ -3,6 +3,7 @@ import * as React from "react";
 import { Input, InputProps } from "@/ui/input";
 import { Label } from "@/ui/label";
 import { cn } from "@/shared/lib/classnames";
+import { PasswordInput } from "./password-input";
 
 interface FloatingInputProps extends InputProps {}
 type FloatingInputWithRefProps = typeof FloatingInput;
@@ -27,6 +28,27 @@ const FloatingInput = React.forwardRef<HTMLInputElement, FloatingInputProps>(
 );
 FloatingInput.displayName = "FloatingInput";
 
+const FloatingPasswordInput = React.forwardRef<
+  HTMLInputElement,
+  FloatingInputProps
+>(({ className, variant, placeholder, ...props }, ref) => {
+  const isError = variant === "destructive";
+  return (
+    <PasswordInput
+      variant={variant}
+      className={cn(
+        "peer pt-[23px] pb-[5px] focus:pt-[23px] focus:pb-[5px] !placeholder-gray-600",
+        isError && "!pt-[23px] !pb-[5px]",
+        className
+      )}
+      ref={ref}
+      {...props}
+    />
+  );
+});
+
+FloatingPasswordInput.displayName = "FloatingPasswordInput";
+
 const FloatingLabel = React.forwardRef<
   React.ElementRef<typeof Label>,
   React.ComponentPropsWithoutRef<typeof Label> & {
@@ -37,7 +59,7 @@ const FloatingLabel = React.forwardRef<
   return (
     <Label
       className={cn(
-        "absolute start-2 top-[18px] z-10 origin-[0] -translate-y-4 scale-75 transform bg-background px-[11px] text-sm text-gray-600 font-normal duration-300 truncate max-w-[420px] bg-transparent",
+        "absolute pointer-events-none start-2 top-[18px] z-10 origin-[0] -translate-y-4 scale-75 transform bg-background px-[11px] text-sm text-gray-600 font-normal duration-300 truncate max-w-[420px] bg-transparent",
         "peer-focus:top-[18px] peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-[11px]",
         "rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4",
         "peer-focus:max-w-[420px] ",
@@ -90,7 +112,38 @@ const FloatingLabelInput = React.forwardRef<
 });
 FloatingLabelInput.displayName = "FloatingLabelInput";
 
-export { FloatingLabelInput };
+const FloatingPasswordLabelInput = React.forwardRef<
+  React.ElementRef<typeof FloatingInput>,
+  React.PropsWithoutRef<FloatingLabelInputProps>
+>(({ id, label, errorMessage, variant, ...props }, ref) => {
+  const [value, setValue] = React.useState("");
+
+  return (
+    <div className="relative">
+      <FloatingPasswordInput
+        placeholder={errorMessage ? label : ""}
+        ref={ref}
+        id={id}
+        variant={variant}
+        {...props}
+        onChange={(e) => {
+          setValue(e.target.value);
+          props?.onChange && props.onChange(e);
+        }}
+      />
+      <FloatingLabel
+        placeholderShown={!value}
+        htmlFor={id}
+        isError={variant === "destructive"}
+      >
+        {errorMessage ? errorMessage : label}
+      </FloatingLabel>
+    </div>
+  );
+});
+FloatingPasswordLabelInput.displayName = "FloatingPasswordLabelInput";
+
+export { FloatingLabelInput, FloatingPasswordLabelInput };
 export type {
   FloatingLabelInputProps,
   FloatingInputProps,
