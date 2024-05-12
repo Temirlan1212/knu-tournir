@@ -1,8 +1,7 @@
 "use client";
 import { Button } from "@/ui/button";
 import { CardContent, CardDescription, CardFooter } from "@/ui/card";
-import { Input } from "@/ui/input";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@/ui/form";
+import { Form, FormField } from "@/ui/form";
 import {
   RegistrationDto,
   RegistrationFormReturn,
@@ -10,6 +9,7 @@ import {
 import { useRegistrationStore } from "../model/store/registration";
 import { selectRegistrationLoading } from "../model/selectors/registration";
 import Link from "next/link";
+import { FormFloatingLabelInput } from "@/shared/ui/form-floating-label-input";
 
 interface RegistrationFormProps extends RegistrationFormReturn {
   onSubmit: (v: RegistrationDto) => void;
@@ -32,13 +32,8 @@ export default function RegistrationForm({
               <FormField
                 control={form.control}
                 name="inputName"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input placeholder="Имя *" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
+                render={(props) => (
+                  <FormFloatingLabelInput label="Имя *" {...props} />
                 )}
               />
             </div>
@@ -46,13 +41,8 @@ export default function RegistrationForm({
               <FormField
                 control={form.control}
                 name="inputEmail"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input placeholder="Почта *" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
+                render={(props) => (
+                  <FormFloatingLabelInput label="Почта *" {...props} />
                 )}
               />
             </div>
@@ -61,13 +51,8 @@ export default function RegistrationForm({
               <FormField
                 control={form.control}
                 name="inputPhone"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input placeholder="Телефон *" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
+                render={(props) => (
+                  <FormFloatingLabelInput label="Телефон *" {...props} />
                 )}
               />
             </div>
@@ -76,18 +61,13 @@ export default function RegistrationForm({
               <FormField
                 control={form.control}
                 name="inputPassword"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input
-                        id="password"
-                        placeholder="Пароль *"
-                        type="password"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
+                render={(props) => (
+                  <FormFloatingLabelInput
+                    id="password"
+                    type="password"
+                    label="Пароль *"
+                    {...props}
+                  />
                 )}
               />
             </div>
@@ -96,19 +76,13 @@ export default function RegistrationForm({
               <FormField
                 control={form.control}
                 name="inputPasswordConfirm"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input
-                        id="password"
-                        placeholder="Повторите пароль *"
-                        type="password"
-                        color="error"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
+                render={(props) => (
+                  <FormFloatingLabelInput
+                    id="password"
+                    type="password"
+                    label="Повторите пароль *"
+                    {...props}
+                  />
                 )}
               />
             </div>
