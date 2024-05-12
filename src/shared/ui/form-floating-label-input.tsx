@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  FloatingInput,
+  FloatingInputWithRefProps,
   FloatingLabelInput,
   FloatingLabelInputProps,
 } from "./floating-label-input";
@@ -12,7 +12,7 @@ import {
 } from "react-hook-form";
 
 const FormFloatingLabelInput = React.forwardRef<
-  React.ElementRef<typeof FloatingInput>,
+  React.ElementRef<FloatingInputWithRefProps>,
   React.PropsWithoutRef<FloatingLabelInputProps> & {
     field: ControllerRenderProps<any, any>;
     fieldState: ControllerFieldState;
