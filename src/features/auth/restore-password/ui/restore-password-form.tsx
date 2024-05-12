@@ -1,8 +1,7 @@
 "use client";
 import { Button } from "@/ui/button";
 import { CardContent, CardFooter } from "@/ui/card";
-import { Input } from "@/ui/input";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@/ui/form";
+import { Form, FormField } from "@/ui/form";
 import {
   RestorePasswordDto,
   RestorePasswordFormReturn,
@@ -10,6 +9,7 @@ import {
 import { useRestorePasswordStore } from "../model/store/restore-password";
 import { selectRestorePasswordLoading } from "../model/selectors/restore-password";
 import { NavigateBackIcon } from "@/entities/navigation-back";
+import { FormFloatingLabelInput } from "@/shared/ui/form-floating-label-input";
 
 interface RestorePasswordProps extends RestorePasswordFormReturn {
   onSubmit: (v: RestorePasswordDto) => void;
@@ -32,13 +32,8 @@ export default function RestorePasswordForm({
               <FormField
                 control={form.control}
                 name="inputEmail"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input placeholder="Почта *" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
+                render={(props) => (
+                  <FormFloatingLabelInput label="Почта *" {...props} />
                 )}
               />
             </div>
