@@ -12,7 +12,7 @@ import Link from "next/link";
 import {
   FormFloatingLabelInput,
   FormFloatingPasswordLabelInput,
-} from "@/ui/form-floating-label-input";
+} from "@/shared/ui/input/form-floating-label-input";
 
 interface RegistrationFormProps extends RegistrationFormReturn {
   onSubmit: (v: RegistrationDto) => void;

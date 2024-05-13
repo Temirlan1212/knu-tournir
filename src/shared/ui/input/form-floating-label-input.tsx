@@ -5,7 +5,7 @@ import {
   FloatingLabelInputProps,
   FloatingPasswordLabelInput,
 } from "./floating-label-input";
-import { FormControl, FormItem } from "./form";
+import { FormControl, FormItem } from "../form";
 import {
   ControllerFieldState,
   ControllerRenderProps,

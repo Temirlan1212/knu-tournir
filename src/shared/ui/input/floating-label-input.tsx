@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import { Input, InputProps } from "@/ui/input";
+import { Input, InputProps } from "@/shared/ui/input/input";
 import { Label } from "@/ui/label";
 import { cn } from "@/shared/lib/classnames";
-import { PasswordInput } from "./password-input";
+import { PasswordInput } from "../password-input";
 
 interface FloatingInputProps extends InputProps {}
 type FloatingInputWithRefProps = typeof FloatingInput;

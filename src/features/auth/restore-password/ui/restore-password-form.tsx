@@ -9,7 +9,7 @@ import {
 import { useRestorePasswordStore } from "../model/store/restore-password";
 import { selectRestorePasswordLoading } from "../model/selectors/restore-password";
 import { NavigateBackIcon } from "@/entities/navigation-back";
-import { FormFloatingLabelInput } from "@/shared/ui/form-floating-label-input";
+import { FormFloatingLabelInput } from "@/shared/ui/input/form-floating-label-input";
 
 interface RestorePasswordProps extends RestorePasswordFormReturn {
   onSubmit: (v: RestorePasswordDto) => void;
