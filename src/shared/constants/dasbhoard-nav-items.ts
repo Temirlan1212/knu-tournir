@@ -9,12 +9,13 @@ import {
   Search,
   Settings,
 } from "lucide-react";
+import { dashboardPaths } from "@/shared/routing";
 
 export const DashboardNavItems: INavItem[] = [
   {
     title: "Главная",
     icon: Home,
-    path: { pathname: "/dashboard/manage" },
+    path: { pathname: dashboardPaths.manage },
     color: "text-500",
   },
   {
@@ -26,13 +27,13 @@ export const DashboardNavItems: INavItem[] = [
   {
     title: "Проекты",
     icon: Folder,
-    path: { pathname: "/dashboard/projects" },
+    path: { pathname: dashboardPaths.projects },
     color: "text-500",
   },
   {
     title: "Курсы",
     icon: BookOpen,
-    path: { pathname: "/dashboard/courses" },
+    path: { pathname: dashboardPaths.courses },
     color: "text-500",
     isChidren: true,
     children: [
@@ -40,21 +41,21 @@ export const DashboardNavItems: INavItem[] = [
         title: "Список курсов",
         icon: List,
         color: "text-500",
-        path: { pathname: "/dashboard/courses/list" },
+        path: { pathname: dashboardPaths.coursesList },
       },
     ],
   },
   {
     title: "Поддержка",
     icon: MessageSquareMore,
-    path: { pathname: "/dashboard/support" },
+    path: { pathname: dashboardPaths.support },
     color: "text-500",
     position: "bottom",
   },
   {
     title: "Настройки",
     icon: Settings,
-    path: { pathname: "/dashboard/settings" },
+    path: { pathname: dashboardPaths.settings },
     color: "text-500",
     position: "bottom",
     isChidren: true,
@@ -63,7 +64,7 @@ export const DashboardNavItems: INavItem[] = [
         title: "Цвет интерфейса",
         icon: Pipette,
         color: "text-500",
-        path: { pathname: "/dashboard/settings/theme" },
+        path: { pathname: dashboardPaths.settingsTheme },
       },
     ],
   },

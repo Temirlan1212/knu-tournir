@@ -11,6 +11,7 @@ import { loginDto } from "../model/dto/login";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/ui/tabs";
 import { Card } from "@/shared/ui/card";
 import { AuthCardHeader } from "@/entities/auth-card-header";
+import { paths } from "@/shared/routing";
 
 export default function LoginCard() {
   const setLoading = useLoginStore(selectLoginSetLoading);
@@ -28,7 +29,7 @@ export default function LoginCard() {
 
   async function onSubmit(data: LoginDto) {
     setLoading("loading");
-    router.push("/dashboard/manage");
+    router.push(paths.dashboard.manage);
     setLoading("loaded");
   }
 
@@ -37,7 +38,7 @@ export default function LoginCard() {
   return (
     <Tabs
       onValueChange={handleTab}
-      defaultValue="login"
+      defaultValue={paths.login}
       className="max-w-[400px]"
     >
       <Card className="relative px-[20px] sm:px-[40px] py-[40px] min-h-[480px] max-h-[90dvh] shadow-none border-none overflow-y-auto">
@@ -46,10 +47,10 @@ export default function LoginCard() {
           description={<>Для продолжения необходимо войти в аккаунт</>}
         />
         <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="login">Вход</TabsTrigger>
-          <TabsTrigger value="register">Регистрация</TabsTrigger>
+          <TabsTrigger value={paths.login}>Вход</TabsTrigger>
+          <TabsTrigger value={paths.register}>Регистрация</TabsTrigger>
         </TabsList>
-        <TabsContent value="login" className="pt-5">
+        <TabsContent value={paths.login} className="pt-5">
           <LoginForm {...form} onSubmit={onSubmit} />
         </TabsContent>
       </Card>

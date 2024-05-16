@@ -10,6 +10,7 @@ import {
   FormFloatingLabelInput,
   FormFloatingPasswordLabelInput,
 } from "@/shared/ui/input/form-floating-label-input";
+import { paths } from "@/shared/routing";
 interface LoginFormProps extends LoginFormReturn {
   onSubmit: (v: LoginDto) => void;
 }
@@ -51,7 +52,7 @@ export default function LoginForm({ onSubmit, ...form }: LoginFormProps) {
             >
               Войти через почту
             </Button>
-            <Link href="/restore-password" className="w-full">
+            <Link href={paths.restorePassword} className="w-full">
               <Button
                 type="button"
                 variant="ghost"
