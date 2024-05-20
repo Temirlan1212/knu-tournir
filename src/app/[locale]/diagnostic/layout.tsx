@@ -5,7 +5,7 @@ export default function Layout({ children }: Readonly<PropsWithChildren>) {
   return (
     <>
       <Header />
-      <div className="py-6 sm:py-10 px-6 sm:px-10">{children}</div>
+      <div className="py-5 px-5">{children}</div>
     </>
   );
 }
