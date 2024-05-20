@@ -33,6 +33,7 @@ const HorizontalStep = React.forwardRef<HTMLDivElement, StepSharedProps>(
       state,
       checkIcon: checkIconProp,
       errorIcon: errorIconProp,
+      labelOrientation,
     } = props;
 
     const localIsLoading = isLoading || state === "loading";
@@ -61,6 +62,8 @@ const HorizontalStep = React.forwardRef<HTMLDivElement, StepSharedProps>(
             "justify-start flex-col flex-1 [&:not(:last-child)]:after:relative [&:not(:last-child)]:after:order-[-1] [&:not(:last-child)]:after:start-[50%] [&:not(:last-child)]:after:end-[50%] [&:not(:last-child)]:after:top-[calc(var(--step-icon-size)/2)] [&:not(:last-child)]:after:w-[calc((100%-var(--step-icon-size))-(var(--step-gap)))]",
           variant === "circle" &&
             "[&:not(:last-child)]:after:flex-1 [&:not(:last-child)]:after:ms-[var(--step-gap)] [&:not(:last-child)]:after:me-[var(--step-gap)]",
+          variant === "circle-column" &&
+            "[&:not(:last-child)]:after:flex-1 [&:not(:last-child)]:after:ms-[var(--step-gap)] [&:not(:last-child)]:after:me-[var(--step-gap)]",
           variant === "line" &&
             "flex-col flex-1 border-t-[3px] data-[active=true]:border-primary",
           styles?.["horizontal-step"]
@@ -76,7 +79,8 @@ const HorizontalStep = React.forwardRef<HTMLDivElement, StepSharedProps>(
         <div
           className={cn(
             "stepper__horizontal-step-container",
-            "flex items-center",
+            "flex items-center gap-2",
+            variant === "circle-column" && "flex-col justify-center",
             variant === "circle-alt" && "flex-col justify-center gap-1",
             variant === "line" && "w-full",
             styles?.["horizontal-step-container"]

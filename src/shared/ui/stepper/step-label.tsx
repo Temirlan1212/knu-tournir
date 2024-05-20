@@ -54,6 +54,9 @@ const StepLabel = ({
         variant === "circle-alt" && "text-center",
         variant === "circle-alt" && orientation === "horizontal" && "ms-0",
         variant === "circle-alt" && orientation === "vertical" && "text-start",
+        variant === "circle-column"
+          ? "m-0"
+          : orientation === "horizontal" && "my-2",
         styles?.["step-label-container"]
       )}
       style={{

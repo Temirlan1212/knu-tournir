@@ -141,7 +141,7 @@ const VerticalStep = React.forwardRef<HTMLDivElement, VerticalStepProps>(
           data-active={active}
           className={cn(
             "stepper__vertical-step-container",
-            "flex items-center",
+            "flex items-center gap-2",
             variant === "line" &&
               "border-s-[3px] data-[active=true]:border-primary py-2 ps-3",
             styles?.["vertical-step-container"]
