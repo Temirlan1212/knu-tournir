@@ -20,3 +20,5 @@ export const zodValidateMinMax = (min: number, max: number) =>
     .max(max, zodDynamicMessages(max).maxFieldLength);
 
 export const zodRequiredField = () => z.string().min(1, zodMessages.required);
+export const zodRequiredFielField = () =>
+  z.record(z.any(), { message: zodMessages.required }).nullable();
