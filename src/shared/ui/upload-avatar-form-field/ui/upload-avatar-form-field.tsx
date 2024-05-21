@@ -8,7 +8,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/ui/form";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AvatarPreview } from "./avatar-preview";
 import { HiddenFileInput } from "./hidden-file-input";
 import { ResetAvatarPreviewAction } from "./reset-avatar-preview-action";
@@ -67,12 +67,17 @@ export function UploadAvatarFormFieldFormItem({
   className,
   value,
 }: UploadAvatarFormFieldFormItemProps) {
-  const [preview, setPreview] = useState(getImageData(value)?.displayUrl || "");
+  const [preview, setPreview] = useState("");
   const inputFileRef = useRef<HTMLInputElement | null>(null);
   const resetPreview = () => {
     setPreview("");
     onChange("");
   };
+
+  useEffect(() => {
+    const previewUrl = getImageData(value)?.displayUrl;
+    if (previewUrl) setPreview(previewUrl);
+  }, []);
 
   return (
     <FormItem className={cn("relative w-[fit-content]", className)}>

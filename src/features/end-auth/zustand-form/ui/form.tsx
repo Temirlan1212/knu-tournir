@@ -21,13 +21,13 @@ const storeVariantsByKey = {
 } as const;
 
 export interface FormProps {
-  storeVariants?: keyof typeof formStoreVariants;
+  storeVariant?: keyof typeof formStoreVariants;
 }
 
 export default function FormComponent({
-  storeVariants = formStoreVariants.default,
+  storeVariant = formStoreVariants.default,
 }: FormProps) {
-  const useStore = storeVariantsByKey[storeVariants];
+  const useStore = storeVariantsByKey[storeVariant];
   const setValues = useStore(selectFormStoreSetValues);
   const values = useStore(selectFormStoreValues);
 
