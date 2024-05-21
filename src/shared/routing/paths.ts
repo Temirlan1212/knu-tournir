@@ -18,18 +18,13 @@ export const dashboardPaths = {
   support: "/dashboard/support",
 };
 
-export const diagnosticPaths = {
-  main: "diagnostic",
-  newProject: "/diagnostic/projects/new",
-};
-
 export const paths = {
   home: "/",
   login: "/login",
   register: "/register",
   restorePassword: "/restore-password",
+  createProject: "/create-project",
   dashboard: dashboardPaths,
-  diagnostic: diagnosticPaths,
 
   // Get the URL for the movie catalog page
   catalog: (params: CatalogParams): string => {
