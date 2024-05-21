@@ -17,7 +17,7 @@ export function AvatarPreview({
   return (
     <Avatar
       className={cn(
-        "w-24 h-24 cursor-pointer border",
+        "w-24 h-24 cursor-pointer border !mt-0",
         isError && "border-destructive"
       )}
       onClick={onClick}

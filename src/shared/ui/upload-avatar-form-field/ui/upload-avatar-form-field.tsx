@@ -83,15 +83,15 @@ export function UploadAvatarFormFieldFormItem({
     <FormItem className={cn("relative w-[fit-content]", className)}>
       {!!label && <FormLabel>{label}</FormLabel>}
       {!!preview && (
-        <ResetAvatarPreviewAction
-          resetPreview={resetPreview}
-          className="top-[15px] right-[0px]"
+        <AvatarFullPreviewAction
+          preview={preview}
+          className="top-[15px] right-[-5px]"
         />
       )}
       {!!preview && (
-        <AvatarFullPreviewAction
-          preview={preview}
-          className="top-[15px] left-[0px]"
+        <ResetAvatarPreviewAction
+          resetPreview={resetPreview}
+          className="top-[-15px] right-[15px]"
         />
       )}
 

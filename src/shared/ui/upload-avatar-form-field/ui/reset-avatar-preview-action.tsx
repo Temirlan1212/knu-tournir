@@ -17,7 +17,7 @@ export function ResetAvatarPreviewAction({
         "cursor-pointer absolute border z-10 bg-muted rounded-full p-[2px]",
         className
       )}
-      size={20}
+      size={23}
       onClick={resetPreview}
     />
   );
