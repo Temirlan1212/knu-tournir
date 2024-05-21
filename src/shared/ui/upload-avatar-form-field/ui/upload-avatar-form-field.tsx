@@ -8,26 +8,13 @@ import {
   FormLabel,
   FormMessage,
 } from "@/ui/form";
-import { ChangeEvent, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { AvatarPreview } from "./avatar-preview";
 import { HiddenFileInput } from "./hidden-file-input";
 import { ResetAvatarPreviewAction } from "./reset-avatar-preview-action";
 import { AvatarFullPreviewAction } from "./avatar-full-preview-action";
 import { cn } from "@/shared/lib/classnames";
-
-function getImageData(event: ChangeEvent<HTMLInputElement>) {
-  const dataTransfer = new DataTransfer();
-
-  Array.from(event.target.files!).forEach((image) =>
-    dataTransfer.items.add(image)
-  );
-
-  const files = dataTransfer.files;
-  if (files?.length < 1) return null;
-  const displayUrl = URL?.createObjectURL(event.target.files![0]);
-
-  return { files, displayUrl };
-}
+import { getImageData } from "@/shared/lib/helpers/file";
 
 interface UploadAvatarFormFieldProps {
   form: UseFormReturn<any>;
@@ -70,6 +57,7 @@ export interface UploadAvatarFormFieldFormItemProps {
   isError: boolean;
   onChange: (event: FileList | string) => void;
   className?: string;
+  value?: FileList;
 }
 
 export function UploadAvatarFormFieldFormItem({
@@ -77,8 +65,9 @@ export function UploadAvatarFormFieldFormItem({
   isError,
   onChange,
   className,
+  value,
 }: UploadAvatarFormFieldFormItemProps) {
-  const [preview, setPreview] = useState("");
+  const [preview, setPreview] = useState(getImageData(value)?.displayUrl || "");
   const inputFileRef = useRef<HTMLInputElement | null>(null);
   const resetPreview = () => {
     setPreview("");
@@ -111,11 +100,10 @@ export function UploadAvatarFormFieldFormItem({
         <HiddenFileInput
           ref={inputFileRef}
           onChange={(event) => {
-            const imageData = getImageData(event);
+            const imageData = getImageData(event.target.files!);
             if (imageData == null) return;
-            const { files, displayUrl } = imageData;
-            setPreview(displayUrl);
-            onChange(files);
+            setPreview(imageData.displayUrl);
+            onChange(imageData.files);
           }}
         />
       </FormControl>

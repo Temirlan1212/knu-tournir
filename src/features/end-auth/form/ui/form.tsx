@@ -32,19 +32,16 @@ export default function FormComponent({
                 control={form.control}
                 name={fieldNames.IMAGE}
                 render={({
-                  field: { onChange, value, ...rest },
+                  field: { onChange, value },
                   fieldState: { error },
                 }) => {
-                  const errorMessage = error?.message
-                    ? String(error?.message)
-                    : null;
-                  const isError = errorMessage != null;
-
+                  const errorMessage = error?.message || null;
                   return (
                     <UploadAvatarFormFieldFormItem
-                      isError={isError}
+                      isError={errorMessage != null}
                       onChange={onChange}
                       className="flex flex-col items-center"
+                      value={value as any}
                     />
                   );
                 }}
