@@ -22,10 +22,12 @@ const storeVariantsByKey = {
 
 export interface FormProps {
   storeVariant?: keyof typeof formStoreVariants;
+  onSubmit?: () => void;
 }
 
 export default function FormComponent({
   storeVariant = formStoreVariants.default,
+  ...rest
 }: FormProps) {
   const useStore = storeVariantsByKey[storeVariant];
   const setValues = useStore(selectFormStoreSetValues);
@@ -42,6 +44,7 @@ export default function FormComponent({
 
   async function onSubmit(values: EndAuthDto) {
     setValues({ values });
+    rest?.onSubmit && rest.onSubmit();
   }
 
   return <EndAuthForm {...form} onSubmit={onSubmit} />;
