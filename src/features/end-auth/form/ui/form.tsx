@@ -5,7 +5,7 @@ import { Form, FormField } from "@/ui/form";
 import { FormFloatingLabelInput } from "@/shared/ui/input/form-floating-label-input";
 import { Dto, FormReturn } from "../model/types";
 import { UploadAvatarFormFieldFormItem } from "@/shared/ui/upload-avatar-form-field";
-import { dtoFieldNames } from "../model/dto";
+import { fieldNames } from "@/shared/constants/field-names";
 
 interface FormProps extends FormReturn {
   onSubmit?: (v: Dto) => void;
@@ -30,7 +30,7 @@ export default function FormComponent({
             <div className="gap-2 flex justify-center">
               <FormField
                 control={form.control}
-                name={dtoFieldNames.IMAGE}
+                name={fieldNames.IMAGE}
                 render={({
                   field: { onChange, value, ...rest },
                   fieldState: { error },
@@ -54,7 +54,7 @@ export default function FormComponent({
             <div className="grid gap-2">
               <FormField
                 control={form.control}
-                name={dtoFieldNames.INPUT_NAME}
+                name={fieldNames.INPUT_NAME}
                 render={(props) => (
                   <FormFloatingLabelInput label="Имя *" {...props} />
                 )}

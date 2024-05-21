@@ -4,15 +4,11 @@ import {
   zodRequiredFielField,
 } from "@/shared/config/zod/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-
-export const dtoFieldNames = {
-  INPUT_NAME: "inputName",
-  IMAGE: "image",
-};
+import { fieldNames } from "@/shared/constants/field-names";
 
 export const dto = z.object({
-  [dtoFieldNames.INPUT_NAME]: zodRequiredField(),
-  [dtoFieldNames.IMAGE]: zodRequiredFielField(),
+  [fieldNames.INPUT_NAME]: zodRequiredField(),
+  [fieldNames.IMAGE]: zodRequiredFielField(),
 });
 
 export const resolver = zodResolver(dto);
