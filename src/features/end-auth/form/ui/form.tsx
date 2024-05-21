@@ -24,7 +24,7 @@ export default function FormComponent({
       <Form {...form}>
         <form
           onSubmit={onSubmit ? form.handleSubmit(onSubmit) : () => {}}
-          className="flex flex-col gap-4"
+          className="flex flex-col gap-4 w-full"
         >
           <CardContent className="px-0 flex flex-col gap-2 pb-2">
             <div className="gap-2 flex justify-center">
