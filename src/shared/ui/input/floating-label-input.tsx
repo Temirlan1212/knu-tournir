@@ -86,7 +86,7 @@ const FloatingLabelInput = React.forwardRef<
   React.ElementRef<typeof FloatingInput>,
   React.PropsWithoutRef<FloatingLabelInputProps>
 >(({ id, label, errorMessage, variant, ...props }, ref) => {
-  const [value, setValue] = React.useState("");
+  const [value, setValue] = React.useState(props.value);
 
   return (
     <div className="relative">
