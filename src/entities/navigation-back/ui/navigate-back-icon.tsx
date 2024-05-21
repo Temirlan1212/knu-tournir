@@ -1,6 +1,6 @@
 import { cn } from "@/shared/lib/classnames";
 import { Button, ButtonProps } from "@/shared/ui/button";
-import { ChevronLeft } from "lucide-react";
+import { MoveLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export default function NavigateBackIcon({
@@ -17,10 +17,10 @@ export default function NavigateBackIcon({
       onClick={(e) => {
         onClick ? onClick(e) : router.back();
       }}
-      className={cn("flex gap-2", className)}
+      className={cn("flex gap-2 w-[fit-content] p-3", className)}
       {...props}
     >
-      <ChevronLeft />
+      <MoveLeft />
       <p>{children}</p>
     </Button>
   );
