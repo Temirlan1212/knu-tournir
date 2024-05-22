@@ -2,13 +2,13 @@
 import { cn } from "@/shared/lib/classnames";
 import { CardDescription, CardTitle } from "@/shared/ui/card";
 import Image, { ImageProps } from "next/image";
+import { HTMLAttributes } from "react";
 
-export interface CardProps {
+export interface CardProps extends HTMLAttributes<HTMLElement> {
   alt: ImageProps["alt"];
   src: string;
   title: string;
   description: string;
-  className?: string;
 }
 
 export default function Card({
@@ -17,6 +17,7 @@ export default function Card({
   title,
   description,
   className,
+  ...rest
 }: CardProps) {
   return (
     <div
@@ -24,6 +25,7 @@ export default function Card({
         "flex cursor-pointer flex-col items-center gap-7 rounded-[16px] bg-[#F2F2F7] p-4",
         className
       )}
+      {...rest}
     >
       {!!src && (
         <Image
