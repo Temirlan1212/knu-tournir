@@ -3,14 +3,10 @@ import {
   CreateProjectProcessCard,
   CreateProjectProcessWrapper,
 } from "@/entities/create-project-process";
-import { EndAuthZustandForm } from "@/features/end-auth/zustand-form";
 import { useStepper } from "@/ui/stepper";
 import { stepIndexes } from "../model/constants/steps";
 import { StepIndexesProps } from "../model/types/steps";
-import {
-  CreateProjectProcessContent,
-  CreateProjectProcessProvider,
-} from "@/features/create-project/process";
+import { NamingsZustandForm as CreateProjectNamingsZustandForm } from "@/features/create-project/namings";
 
 export default function Content() {
   const { activeStep, prevStep, nextStep } = useStepper();
@@ -22,14 +18,17 @@ export default function Content() {
           title={"Завершите регистрацию аккаунта"}
           description={"Отредактируйте информацию и приступайте к работе"}
         >
-          <EndAuthZustandForm onSubmit={nextStep} />
+          <CreateProjectNamingsZustandForm onSubmit={nextStep} />
         </CreateProjectProcessCard>
       </CreateProjectProcessWrapper>
     ),
     [stepIndexes.second]: (
-      <CreateProjectProcessProvider>
-        <CreateProjectProcessContent />
-      </CreateProjectProcessProvider>
+      <CreateProjectProcessWrapper onNavigateBack={prevStep}>
+        <CreateProjectProcessCard
+          title={"Создайте первый проект"}
+          description={"Отредактируйте информацию и приступайте к работе"}
+        ></CreateProjectProcessCard>
+      </CreateProjectProcessWrapper>
     ),
   };
 
