@@ -1,25 +1,25 @@
 "use client";
 import {
-  CreateProjectProcessesSteps,
-  CreateProjectProcessesContent,
-  CreateProjectProcessesProvider,
-} from "@/widgets/create-project-processes";
-import { CreateProjectProcessesHeader } from "@/widgets/header";
+  GlobalCreateProjectProcessesSteps,
+  GlobalCreateProjectProcessesContent,
+  GlobalCreateProjectProcessesProvider,
+} from "@/widgets/global-create-project-processes";
+import { GlobalCreateProjectProcessesHeader } from "@/widgets/header";
 
 export default function Page() {
   return (
     <div className="flex w-full flex-col gap-4">
-      <CreateProjectProcessesProvider>
-        <CreateProjectProcessesHeader>
+      <GlobalCreateProjectProcessesProvider>
+        <GlobalCreateProjectProcessesHeader>
           <div className="w-full mt-3">
-            <CreateProjectProcessesSteps />
+            <GlobalCreateProjectProcessesSteps />
           </div>
-        </CreateProjectProcessesHeader>
+        </GlobalCreateProjectProcessesHeader>
 
         <div className="py-5 px-5">
-          <CreateProjectProcessesContent />
+          <GlobalCreateProjectProcessesContent />
         </div>
-      </CreateProjectProcessesProvider>
+      </GlobalCreateProjectProcessesProvider>
     </div>
   );
 }
