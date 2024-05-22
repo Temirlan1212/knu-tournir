@@ -5,4 +5,5 @@ export const fieldNames = {
   PROJECT_WEBSITE: "projectWebsite",
   PROJECT_ACTIVITY_FIELD: "projectActivityField",
   PROJECT_IMAGE: "projectImage",
+  MEMBERS_TYPE: "membersType",
 } as const;
