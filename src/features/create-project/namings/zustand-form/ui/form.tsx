@@ -13,7 +13,8 @@ import {
 import { formStoreVariants } from "@/shared/constants/variants";
 import { fieldNames } from "@/shared/constants/field-names";
 
-const { PROJECT_ACTIVITY_FIELD, PROJECT_NAME, PROJECT_WEBSITE } = fieldNames;
+const { PROJECT_ACTIVITY_FIELD, PROJECT_NAME, PROJECT_WEBSITE, PROJECT_IMAGE } =
+  fieldNames;
 
 const storeVariantsByKey = {
   [formStoreVariants.default]: useFormStore,
@@ -40,6 +41,7 @@ export default function FormComponent({
       [PROJECT_ACTIVITY_FIELD]: values?.[PROJECT_ACTIVITY_FIELD] || "",
       [PROJECT_NAME]: values?.[PROJECT_NAME] || "",
       [PROJECT_WEBSITE]: values?.[PROJECT_WEBSITE] || "",
+      [PROJECT_IMAGE]: values?.[PROJECT_IMAGE] || null,
     },
   });
 
