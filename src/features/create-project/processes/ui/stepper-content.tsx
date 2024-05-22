@@ -1,8 +1,8 @@
 "use client";
 import {
-  CreateProjectProcessCard,
-  CreateProjectProcessWrapper,
-} from "@/entities/create-project-process";
+  GlobalCreateProjectProcessesCard,
+  GlobalCreateProjectProcessesWrapper,
+} from "@/widgets/global-create-project-processes";
 import { useStepper } from "@/ui/stepper";
 import { stepIndexes } from "../model/constants/steps";
 import { StepIndexesProps } from "../model/types/steps";
@@ -13,22 +13,22 @@ export default function Content() {
 
   const steps: Record<StepIndexesProps, React.ReactNode> = {
     [stepIndexes.first]: (
-      <CreateProjectProcessWrapper>
-        <CreateProjectProcessCard
+      <GlobalCreateProjectProcessesWrapper>
+        <GlobalCreateProjectProcessesCard
           title={"Завершите регистрацию аккаунта"}
           description={"Отредактируйте информацию и приступайте к работе"}
         >
           <CreateProjectNamingsZustandForm onSubmit={nextStep} />
-        </CreateProjectProcessCard>
-      </CreateProjectProcessWrapper>
+        </GlobalCreateProjectProcessesCard>
+      </GlobalCreateProjectProcessesWrapper>
     ),
     [stepIndexes.second]: (
-      <CreateProjectProcessWrapper onNavigateBack={prevStep}>
-        <CreateProjectProcessCard
+      <GlobalCreateProjectProcessesWrapper onNavigateBack={prevStep}>
+        <GlobalCreateProjectProcessesCard
           title={"Создайте первый проект"}
           description={"Отредактируйте информацию и приступайте к работе"}
-        ></CreateProjectProcessCard>
-      </CreateProjectProcessWrapper>
+        ></GlobalCreateProjectProcessesCard>
+      </GlobalCreateProjectProcessesWrapper>
     ),
   };
 

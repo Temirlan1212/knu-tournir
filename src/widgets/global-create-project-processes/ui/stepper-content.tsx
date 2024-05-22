@@ -1,8 +1,6 @@
 "use client";
-import {
-  CreateProjectProcessCard,
-  CreateProjectProcessWrapper,
-} from "@/entities/create-project-process";
+import StepperCard from "./stepper-card";
+import StepperWrapper from "./stepper-wrapper";
 import { EndAuthZustandForm } from "@/features/end-auth/zustand-form";
 import { useStepper } from "@/ui/stepper";
 import { stepIndexes } from "../model/constants/steps";
@@ -17,14 +15,14 @@ export default function Content() {
 
   const steps: Record<StepIndexesProps, React.ReactNode> = {
     [stepIndexes.first]: (
-      <CreateProjectProcessWrapper>
-        <CreateProjectProcessCard
+      <StepperWrapper>
+        <StepperCard
           title={"Завершите регистрацию аккаунта"}
           description={"Отредактируйте информацию и приступайте к работе"}
         >
           <EndAuthZustandForm onSubmit={nextStep} />
-        </CreateProjectProcessCard>
-      </CreateProjectProcessWrapper>
+        </StepperCard>
+      </StepperWrapper>
     ),
     [stepIndexes.second]: (
       <CreateProjectProcessesProvider>
