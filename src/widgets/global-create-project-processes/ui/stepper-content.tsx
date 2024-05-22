@@ -8,9 +8,9 @@ import { useStepper } from "@/ui/stepper";
 import { stepIndexes } from "../model/constants/steps";
 import { StepIndexesProps } from "../model/types/steps";
 import {
-  CreateProjectProcessContent,
-  CreateProjectProcessProvider,
-} from "@/features/create-project/process";
+  CreateProjectProcessesProvider,
+  CreateProjectProcessesContent,
+} from "@/features/create-project/processes";
 
 export default function Content() {
   const { activeStep, prevStep, nextStep } = useStepper();
@@ -27,9 +27,9 @@ export default function Content() {
       </CreateProjectProcessWrapper>
     ),
     [stepIndexes.second]: (
-      <CreateProjectProcessProvider>
-        <CreateProjectProcessContent />
-      </CreateProjectProcessProvider>
+      <CreateProjectProcessesProvider>
+        <CreateProjectProcessesContent />
+      </CreateProjectProcessesProvider>
     ),
   };
 
