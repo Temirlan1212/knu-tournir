@@ -80,7 +80,7 @@ const Steps = React.forwardRef<
             "--step-gap": variables?.["--step-gap"] || "8px",
           } as React.CSSProperties
         }
-        {...rest}
+        // {...rest}
       >
         <VerticalContent>{items}</VerticalContent>
       </div>

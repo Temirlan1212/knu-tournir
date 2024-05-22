@@ -1,3 +1,4 @@
+"use client";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,7 +14,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/ui/avatar";
 import { truncateText } from "@/shared/lib/helpers/truncate";
 import { LogOut } from "lucide-react";
 
-export default async function UserNav() {
+export default function UserNav() {
   const username = "Admin";
   const email = "";
 

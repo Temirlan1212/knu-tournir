@@ -50,13 +50,13 @@ const StepLabel = ({
       className={cn(
         "stepper__step-label-container",
         "flex-col flex",
-        variant !== "line" ? "ms-2" : orientation === "horizontal" && "my-2",
+        variant !== "line" ? "ms-2" : orientation === "horizontal" && "mt-2",
         variant === "circle-alt" && "text-center",
         variant === "circle-alt" && orientation === "horizontal" && "ms-0",
         variant === "circle-alt" && orientation === "vertical" && "text-start",
         variant === "circle-column"
           ? "m-0"
-          : orientation === "horizontal" && "my-2",
+          : orientation === "horizontal" && "mt-2",
         styles?.["step-label-container"]
       )}
       style={{
