@@ -2,18 +2,22 @@
 import {
   GlobalCreateProjectProcessesCard,
   GlobalCreateProjectProcessesWrapper,
+  GlobalCreateProjectProcessesWrapperProps,
 } from "@/widgets/global-create-project-processes";
 import { useStepper } from "@/ui/stepper";
 import { stepIndexes } from "../model/constants/steps";
 import { StepIndexesProps } from "../model/types/steps";
 import { NamingsZustandForm as CreateProjectNamingsZustandForm } from "@/features/create-project/namings";
 
-export default function Content() {
+export interface ContentProps
+  extends GlobalCreateProjectProcessesWrapperProps {}
+
+export default function Content({ onNavigateBack }: ContentProps) {
   const { activeStep, prevStep, nextStep } = useStepper();
 
   const steps: Record<StepIndexesProps, React.ReactNode> = {
     [stepIndexes.first]: (
-      <GlobalCreateProjectProcessesWrapper>
+      <GlobalCreateProjectProcessesWrapper onNavigateBack={onNavigateBack}>
         <GlobalCreateProjectProcessesCard
           title={"Завершите регистрацию аккаунта"}
           description={"Отредактируйте информацию и приступайте к работе"}

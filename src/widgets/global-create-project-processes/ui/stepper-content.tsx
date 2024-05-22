@@ -26,7 +26,7 @@ export default function Content() {
     ),
     [stepIndexes.second]: (
       <CreateProjectProcessesProvider>
-        <CreateProjectProcessesContent />
+        <CreateProjectProcessesContent onNavigateBack={prevStep} />
       </CreateProjectProcessesProvider>
     ),
   };
