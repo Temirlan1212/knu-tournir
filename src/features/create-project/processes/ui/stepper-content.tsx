@@ -20,7 +20,7 @@ export default function Content({ onNavigateBack }: ContentProps) {
     [stepIndexes.first]: (
       <GlobalCreateProjectProcessesWrapper onNavigateBack={onNavigateBack}>
         <GlobalCreateProjectProcessesCard
-          title={"Завершите регистрацию аккаунта"}
+          title={"Создайте первый проект"}
           description={"Отредактируйте информацию и приступайте к работе"}
         >
           <CreateProjectNamingsZustandForm onSubmit={nextStep} />
