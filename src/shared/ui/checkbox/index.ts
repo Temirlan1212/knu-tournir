@@ -1,2 +1,2 @@
 export * from "./checkbox";
-export * from "./checkbox-with-icon";
+export * from "./checkbox-with-label";
