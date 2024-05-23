@@ -42,11 +42,11 @@ export default function FormComponent({
     values: values != null ? values : undefined,
     defaultValues: {
       [PROMOTION_CHANNELS_OFFLINE_EVENTS]:
-        values?.[PROMOTION_CHANNELS_OFFLINE_EVENTS] || "",
+        values?.[PROMOTION_CHANNELS_OFFLINE_EVENTS] || [],
       [PROMOTION_CHANNELS_PLATFORMS]:
-        values?.[PROMOTION_CHANNELS_PLATFORMS] || "",
+        values?.[PROMOTION_CHANNELS_PLATFORMS] || [],
       [PROMOTION_CHANNELS_SOCIAL_MEDIA]:
-        values?.[PROMOTION_CHANNELS_SOCIAL_MEDIA] || "",
+        values?.[PROMOTION_CHANNELS_SOCIAL_MEDIA] || [],
     },
   });
 
