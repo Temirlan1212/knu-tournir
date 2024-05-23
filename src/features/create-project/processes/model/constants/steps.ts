@@ -12,5 +12,4 @@ export const stepIndexes = {
   first: 0,
   second: 1,
   third: 2,
-  four: 3,
 } as const;

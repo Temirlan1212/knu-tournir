@@ -14,7 +14,10 @@ import { PromotionChannelsZustandForm } from "../../promotion-channels";
 export interface ContentProps
   extends GlobalCreateProjectProcessesWrapperProps {}
 
-export default function Content({ onNavigateBack }: ContentProps) {
+export default function Content({
+  onNavigateBack,
+  onNavigateForward,
+}: ContentProps) {
   const { activeStep, prevStep, nextStep } = useStepper();
 
   const steps: Record<StepIndexesProps, React.ReactNode> = {
@@ -50,17 +53,8 @@ export default function Content({ onNavigateBack }: ContentProps) {
           }
           className="max-w-[420px] !max-h-full h-full overflow-hidden justify-center"
         >
-          <PromotionChannelsZustandForm onSubmit={nextStep} />
+          <PromotionChannelsZustandForm onSubmit={onNavigateForward} />
         </GlobalCreateProjectProcessesCard>
-      </GlobalCreateProjectProcessesWrapper>
-    ),
-    [stepIndexes.four]: (
-      <GlobalCreateProjectProcessesWrapper onNavigateBack={prevStep}>
-        <GlobalCreateProjectProcessesCard
-          title={"Создайте первый проект"}
-          description={"Отредактируйте информацию и приступайте к работе"}
-          className="max-w-full !max-h-full h-full overflow-hidden justify-center"
-        ></GlobalCreateProjectProcessesCard>
       </GlobalCreateProjectProcessesWrapper>
     ),
   };

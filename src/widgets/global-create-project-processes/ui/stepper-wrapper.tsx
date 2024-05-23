@@ -5,6 +5,7 @@ import { PropsWithChildren } from "react";
 
 export interface MainComponentProps {
   onNavigateBack?: () => void;
+  onNavigateForward?: () => void;
 }
 
 export default function MainComponent({

@@ -26,8 +26,19 @@ export default function Content() {
     ),
     [stepIndexes.second]: (
       <CreateProjectProcessesProvider>
-        <CreateProjectProcessesContent onNavigateBack={prevStep} />
+        <CreateProjectProcessesContent
+          onNavigateForward={nextStep}
+          onNavigateBack={prevStep}
+        />
       </CreateProjectProcessesProvider>
+    ),
+    [stepIndexes.third]: (
+      <StepperWrapper onNavigateBack={prevStep}>
+        <StepperCard
+          title={"Что хотите сделать, используя инструменты платформы?"}
+          description={"Рассчитываем потенциальную работу над вашим проектом"}
+        ></StepperCard>
+      </StepperWrapper>
     ),
   };
 
