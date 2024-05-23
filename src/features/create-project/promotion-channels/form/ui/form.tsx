@@ -4,19 +4,19 @@ import { CardContent, CardFooter } from "@/ui/card";
 import { Form, FormField, FormMessage } from "@/ui/form";
 import { Dto, FormReturn } from "../model/types";
 import { fieldNames } from "@/shared/constants/field-names";
-import {
-  CheckboxWithLabelAccordionItem,
-  CheckboxWithLabelAccordionItemDataProps,
-} from "@/entities/checkbox-with-label-accordion";
+import { CheckboxWithLabelAccordionItem } from "@/entities/checkbox-with-label-accordion";
 import { Accordion } from "@/shared/ui/accordion";
+import {
+  offlineEventsData,
+  platformsData,
+  socialMediaData,
+} from "../model/constants/data";
 
 interface FormProps extends FormReturn {
   onSubmit?: (v: Dto) => void;
   loading?: boolean;
   submitButtonText?: string;
 }
-
-const data: CheckboxWithLabelAccordionItemDataProps = [];
 
 export default function FormComponent({
   onSubmit,
@@ -37,7 +37,7 @@ export default function FormComponent({
             collapsible
             className="w-full"
           >
-            <CardContent className="px-0 flex flex-col gap-2 pb-2 items-center w-full">
+            <CardContent className="px-0 flex flex-col gap-2 pb-2 items-center w-full border px-3 py-0 rounded-[10px]">
               <FormField
                 control={form.control}
                 name={fieldNames.PROMOTION_CHANNELS_PLATFORMS}
@@ -47,7 +47,7 @@ export default function FormComponent({
                       <CheckboxWithLabelAccordionItem
                         accordionValue="v-1"
                         title="Специализированные платформы"
-                        data={data}
+                        data={platformsData}
                         defaultValues={field.value}
                         onChange={field.onChange}
                         slots={{ errorMessage: <FormMessage /> }}
@@ -65,7 +65,7 @@ export default function FormComponent({
                       <CheckboxWithLabelAccordionItem
                         accordionValue="v-2"
                         title="Социальные сети"
-                        data={data}
+                        data={socialMediaData}
                         defaultValues={field.value}
                         onChange={field.onChange}
                         slots={{ errorMessage: <FormMessage /> }}
@@ -83,10 +83,11 @@ export default function FormComponent({
                       <CheckboxWithLabelAccordionItem
                         accordionValue="v-3"
                         title="Офлайн-мероприятия"
-                        data={data}
+                        data={offlineEventsData}
                         defaultValues={field.value}
                         onChange={field.onChange}
                         slots={{ errorMessage: <FormMessage /> }}
+                        className="border-none"
                       />
                     </div>
                   );

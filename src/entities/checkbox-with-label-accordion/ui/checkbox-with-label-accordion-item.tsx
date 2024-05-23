@@ -1,7 +1,7 @@
 "use client";
+import { cn } from "@/shared/lib/classnames";
 import { CheckboxWithLabel } from "@/shared/ui/checkbox";
 import {
-  Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
@@ -22,6 +22,7 @@ export interface ComponentProps {
   idFieldName?: string;
   iconFieldName?: string;
   onChange?: (v: ValuesProps) => void;
+  className?: string;
   slots?: {
     errorMessage?: React.ReactNode;
   };
@@ -36,6 +37,7 @@ export default function Component({
   idFieldName = "id",
   iconFieldName = "icon",
   accordionValue,
+  className,
   onChange,
   slots,
 }: ComponentProps) {
@@ -63,42 +65,41 @@ export default function Component({
   }, []);
 
   return (
-    <>
-      <AccordionItem value={accordionValue} className="w-full">
-        <AccordionTrigger>
-          <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1 text-primary">
-              <CheckCheck width={18} height={18} />
-              {values.length}
-            </div>
-            {title ? title : null}
+    <AccordionItem value={accordionValue} className={cn("w-full", className)}>
+      <AccordionTrigger>
+        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 text-primary">
+            <CheckCheck width={18} height={18} />
+            {values.length}
           </div>
-        </AccordionTrigger>
-        {slots?.errorMessage && slots?.errorMessage}
+          {title ? title : null}
+        </div>
+      </AccordionTrigger>
+      {slots?.errorMessage && slots?.errorMessage}
 
-        <AccordionContent className="max-h-[400px] overflow-y-auto">
-          {data.map((item, index) => {
-            const label = item?.[labelFieldName];
-            const value = item?.[valueFieldName];
-            const id = item?.[idFieldName];
-            const icon = item?.[iconFieldName];
-            if (!value) return null;
+      <AccordionContent className="max-h-[400px] overflow-y-auto flex flex-col gap-2 border-none">
+        {data.map((item, index) => {
+          const label = item?.[labelFieldName];
+          const value = item?.[valueFieldName];
+          const id = item?.[idFieldName];
+          const icon = item?.[iconFieldName];
+          if (!value) return null;
 
-            return (
-              <CheckboxWithLabel
-                key={index}
-                checked={verifyIsValueChecked(value)}
-                onCheckedChange={(checked) =>
-                  handleValueChange(value, !checked as boolean)
-                }
-                id={id || value || String(index)}
-                label={label}
-                icon={icon}
-              />
-            );
-          })}
-        </AccordionContent>
-      </AccordionItem>
-    </>
+          return (
+            <CheckboxWithLabel
+              key={index}
+              checked={verifyIsValueChecked(value)}
+              iconClassName="!w-5 !h-5"
+              onCheckedChange={(checked) =>
+                handleValueChange(value, !checked as boolean)
+              }
+              id={id || value || String(index)}
+              label={label}
+              icon={icon}
+            />
+          );
+        })}
+      </AccordionContent>
+    </AccordionItem>
   );
 }
