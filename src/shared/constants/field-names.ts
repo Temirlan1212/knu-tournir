@@ -6,4 +6,7 @@ export const fieldNames = {
   PROJECT_ACTIVITY_FIELD: "projectActivityField",
   PROJECT_IMAGE: "projectImage",
   MEMBERS_TYPE: "membersType",
+  PROMOTION_CHANNELS_PLATFORMS: "platforms",
+  PROMOTION_CHANNELS_SOCIAL_MEDIA: "socialMedia",
+  PROMOTION_CHANNELS_OFFLINE_EVENTS: "offlineEvents",
 } as const;

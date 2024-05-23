@@ -9,6 +9,7 @@ import { stepIndexes } from "../model/constants/steps";
 import { StepIndexesProps } from "../model/types/steps";
 import { NamingsZustandForm as CreateProjectNamingsZustandForm } from "@/features/create-project/namings";
 import { MembersZustandForm } from "@/features/create-project/members";
+import { PromotionChannelsZustandForm } from "../../promotion-channels";
 
 export interface ContentProps
   extends GlobalCreateProjectProcessesWrapperProps {}
@@ -41,6 +42,19 @@ export default function Content({ onNavigateBack }: ContentProps) {
       </GlobalCreateProjectProcessesWrapper>
     ),
     [stepIndexes.third]: (
+      <GlobalCreateProjectProcessesWrapper onNavigateBack={prevStep}>
+        <GlobalCreateProjectProcessesCard
+          title={"Каналы продвижения"}
+          description={
+            "Укажите, какими каналами продвижения вы активно пользуетесь"
+          }
+          className="max-w-[420px] !max-h-full h-full overflow-hidden justify-center"
+        >
+          <PromotionChannelsZustandForm onSubmit={nextStep} />
+        </GlobalCreateProjectProcessesCard>
+      </GlobalCreateProjectProcessesWrapper>
+    ),
+    [stepIndexes.four]: (
       <GlobalCreateProjectProcessesWrapper onNavigateBack={prevStep}>
         <GlobalCreateProjectProcessesCard
           title={"Создайте первый проект"}
