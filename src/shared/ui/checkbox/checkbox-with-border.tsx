@@ -12,7 +12,7 @@ export const CheckboxWithBorder = React.forwardRef<
 >(({ label, id, ...props }, ref) => {
   return (
     <label
-      htmlFor={"tima"}
+      htmlFor={id}
       className="flex gap-2 items-center border border-1 p-[10px] rounded-md"
     >
       <Checkbox id={id} ref={ref} {...props} />

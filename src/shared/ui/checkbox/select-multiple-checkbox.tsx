@@ -1,23 +1,76 @@
 "use client";
-import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
-import React from "react";
-import { Checkbox } from "./checkbox";
 
-export const SelectMutipleCheckbox = React.forwardRef<
-  React.ElementRef<typeof CheckboxPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> & {
-    id: string;
-    label?: string;
-  }
->(({ label, id, ...props }, ref) => {
+import { cn } from "@/shared/lib/classnames";
+import {
+  CheckboxWithBorder,
+  DataProps,
+  SelectMultipleCheckboxProvider,
+  ValuesProps,
+  useSelectMultipleCheckbox,
+} from "@/shared/ui/checkbox";
+
+export interface ComponentProps {
+  data: DataProps;
+  defaultValues: ValuesProps;
+  valueFieldName?: string;
+  labelFieldName?: string;
+  idFieldName?: string;
+  onChange?: (v: ValuesProps) => void;
+  className?: string;
+  slots?: {
+    errorMessage?: React.ReactNode;
+  };
+}
+
+function Component({
+  data,
+  valueFieldName = "value",
+  labelFieldName = "label",
+  idFieldName = "id",
+  className,
+  onChange,
+  slots,
+}: ComponentProps) {
+  const { onChange: handleOnChange, isChecked } = useSelectMultipleCheckbox();
+
   return (
-    <label
-      htmlFor={"tima"}
-      className="flex gap-2 items-center border border-1 p-[10px] rounded-md"
-    >
-      <Checkbox id={id} ref={ref} {...props} />
-      {label}
-    </label>
+    <div className={cn("flex flex-col gap-2 justify-start", className)}>
+      {data.map((item, index) => {
+        const label = item?.[labelFieldName];
+        const value = item?.[valueFieldName];
+        const id = item?.[idFieldName];
+        if (!value) return null;
+
+        return (
+          <CheckboxWithBorder
+            key={index}
+            checked={isChecked && isChecked(value)}
+            onCheckedChange={(checked) => {
+              handleOnChange &&
+                handleOnChange({
+                  value,
+                  isChecked: !checked,
+                  onChangeCallback: onChange,
+                });
+            }}
+            id={id || value || String(index)}
+            label={label}
+          />
+        );
+      })}
+
+      {slots?.errorMessage && slots?.errorMessage}
+    </div>
   );
-});
-SelectMutipleCheckbox.displayName = "SelectMutipleCheckbox";
+}
+
+export default function ComponentWithProvider({
+  defaultValues,
+  ...rest
+}: ComponentProps) {
+  return (
+    <SelectMultipleCheckboxProvider value={{ defaultValues }}>
+      <Component defaultValues={defaultValues} {...rest} />
+    </SelectMultipleCheckboxProvider>
+  );
+}
