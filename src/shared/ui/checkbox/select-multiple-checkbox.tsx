@@ -34,7 +34,7 @@ function Component({
   const { onChange: handleOnChange, isChecked } = useSelectMultipleCheckbox();
 
   return (
-    <div className={cn("flex flex-col gap-2 justify-start", className)}>
+    <div className={cn("flex flex-col gap-2 justify-start w-full", className)}>
       {data.map((item, index) => {
         const label = item?.[labelFieldName];
         const value = item?.[valueFieldName];

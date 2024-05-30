@@ -9,4 +9,7 @@ export const fieldNames = {
   PROMOTION_CHANNELS_PLATFORMS: "platforms",
   PROMOTION_CHANNELS_SOCIAL_MEDIA: "socialMedia",
   PROMOTION_CHANNELS_OFFLINE_EVENTS: "offlineEvents",
+  PROBLEMS_LIST: "problemsList",
+  PROBLEMS_GOAL: "problemsGoal",
+  PROBLEMS_PRIORITY: "problemsProirity",
 } as const;

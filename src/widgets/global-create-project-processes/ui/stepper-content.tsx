@@ -9,6 +9,10 @@ import {
   CreateProjectProcessesProvider,
   CreateProjectProcessesContent,
 } from "@/features/create-project/processes";
+import {
+  ProblemsProcessesContent,
+  ProblemsProcessesProvider,
+} from "@/features/problems/processes";
 
 export default function Content() {
   const { activeStep, prevStep, nextStep } = useStepper();
@@ -33,6 +37,14 @@ export default function Content() {
       </CreateProjectProcessesProvider>
     ),
     [stepIndexes.third]: (
+      <ProblemsProcessesProvider>
+        <ProblemsProcessesContent
+          onNavigateForward={nextStep}
+          onNavigateBack={prevStep}
+        />
+      </ProblemsProcessesProvider>
+    ),
+    [stepIndexes.four]: (
       <StepperWrapper onNavigateBack={prevStep}>
         <StepperCard
           title={"Что хотите сделать, используя инструменты платформы?"}
