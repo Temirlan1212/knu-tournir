@@ -12,4 +12,9 @@ export const fieldNames = {
   PROBLEMS_LIST: "problemsList",
   PROBLEMS_GOAL: "problemsGoal",
   PROBLEMS_PRIORITY: "problemsProirity",
+  PAYMENT_NUMBER: "number",
+  PAYMENT_EXPIRY: "expiry",
+  PAYMENT_CVC: "cvc",
+  PAYMENT_NAME: "name",
+  PAYMENT_FOCUS: "focus",
 } as const;

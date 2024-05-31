@@ -4,4 +4,5 @@ export const storageNames = {
   zustand_create_project_promotion_channels:
     "zustand_create_project_promotion_channels",
   zustand_create_project_problems_form: "zustand_create_project_problems_form",
+  zustand_payment_form: "zustand_payment_form",
 } as const;
