@@ -30,11 +30,13 @@ export default function LoginCard() {
 
   async function onSubmit(data: LoginDto) {
     setLoading("loading");
-    router.push(paths.dashboard.manage);
 
     try {
       const res = await signIn("credentials", { ...data, redirect: false });
-      console.log(res);
+      if (res?.ok) {
+        router.push(paths.dashboard.manage);
+        router.refresh();
+      }
     } catch (error) {
       console.error(error);
     }

@@ -9,7 +9,7 @@ import { GlobalCreateProjectProcessesHeader } from "@/widgets/header";
 export default function Page() {
   return (
     <div className="flex w-full flex-col gap-4">
-      <GlobalCreateProjectProcessesProvider>
+      {/* <GlobalCreateProjectProcessesProvider>
         <GlobalCreateProjectProcessesHeader>
           <div className="w-full mt-3">
             <GlobalCreateProjectProcessesSteps />
@@ -19,7 +19,7 @@ export default function Page() {
         <div className="py-5 px-5">
           <GlobalCreateProjectProcessesContent />
         </div>
-      </GlobalCreateProjectProcessesProvider>
+      </GlobalCreateProjectProcessesProvider> */}
     </div>
   );
 }

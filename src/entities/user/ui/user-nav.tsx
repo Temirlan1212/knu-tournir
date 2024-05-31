@@ -13,10 +13,13 @@ import { Button } from "@/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/ui/avatar";
 import { truncateText } from "@/shared/lib/helpers/truncate";
 import { LogOut } from "lucide-react";
+import { SignOutLink } from "@/ui/sign-out-link";
+import { useSession } from "next-auth/react";
 
 export default function UserNav() {
-  const username = "Admin";
-  const email = "";
+  const session = useSession();
+  const username = session.data?.user?.email || "";
+  const email = session.data?.user?.email || "";
 
   return (
     <DropdownMenu>
@@ -44,16 +47,18 @@ export default function UserNav() {
           <DropdownMenuItem>Профиль</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuLabel
-          className={
-            "!cursor-pointer font-normal text-destructive relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors hover:bg-accent hover:text-destructive data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
-          }
-        >
-          Выйти
-          <DropdownMenuShortcut>
-            <LogOut className="w-[14px]" />
-          </DropdownMenuShortcut>
-        </DropdownMenuLabel>
+        <SignOutLink>
+          <DropdownMenuLabel
+            className={
+              "!cursor-pointer font-normal text-destructive relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors hover:bg-accent hover:text-destructive data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
+            }
+          >
+            Выйти
+            <DropdownMenuShortcut>
+              <LogOut className="w-[14px]" />
+            </DropdownMenuShortcut>
+          </DropdownMenuLabel>
+        </SignOutLink>
       </DropdownMenuContent>
     </DropdownMenu>
   );

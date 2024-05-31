@@ -35,13 +35,13 @@ export const options: NextAuthOptions = {
         const { password, email } = credentials as any;
 
         try {
-          const res = await fetch("https://restful-booker.herokuapp.com/auth", {
-            method: "POST",
-            body: JSON.stringify({ email, password }),
-            cache: "no-cache",
-          });
-          const user = await res.json();
-          return user;
+          // const res = await fetch("https://restful-booker.herokuapp.com/auth", {
+          //   method: "POST",
+          //   body: JSON.stringify({ email, password }),
+          //   cache: "no-cache",
+          // });
+          // const user = await res.json();
+          return { email: "tima@gmail.com", reason: "no reason" } as any;
         } catch (error: any) {
           throw new Error(error);
         }
@@ -51,7 +51,7 @@ export const options: NextAuthOptions = {
   callbacks: {
     jwt: async ({ token, user }) => {
       if (user) {
-        token.email = "tima@gmail.com";
+        token.email = user.email;
         token.reason = user.reason;
       }
 

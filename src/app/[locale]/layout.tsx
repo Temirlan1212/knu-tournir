@@ -9,6 +9,7 @@ import { NextTopLoader } from "@/widgets/next-top-loader";
 import { Toaster } from "@/ui/toaster";
 import { getServerSession } from "next-auth";
 import NextAuthProvider from "@/app/providers/next-auth-provider";
+import { options } from "../api/auth/[...nextauth]/options";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,7 +29,7 @@ export default async function RootLayout({
   children,
   params: { locale },
 }: Readonly<RootLayoutProps>) {
-  const session = await getServerSession();
+  const session = await getServerSession(options);
   return (
     <html lang={locale}>
       <body className={inter.className}>
