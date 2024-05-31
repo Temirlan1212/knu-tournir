@@ -12,6 +12,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/ui/tabs";
 import { Card } from "@/shared/ui/card";
 import { AuthCardHeader } from "@/entities/auth-card-header";
 import { paths } from "@/shared/routing";
+import { signIn } from "next-auth/react";
 
 export default function LoginCard() {
   const setLoading = useLoginStore(selectLoginSetLoading);
@@ -30,6 +31,14 @@ export default function LoginCard() {
   async function onSubmit(data: LoginDto) {
     setLoading("loading");
     router.push(paths.dashboard.manage);
+
+    try {
+      const res = await signIn("credentials", { ...data, redirect: false });
+      console.log(res);
+    } catch (error) {
+      console.error(error);
+    }
+
     setLoading("loaded");
   }
 

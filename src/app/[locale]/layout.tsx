@@ -7,6 +7,8 @@ import { DefaultThemes, Themes, ThemesEnum } from "@/shared/constants/theme";
 import { TooltipProvider } from "@/shared/ui/tooltip";
 import { NextTopLoader } from "@/widgets/next-top-loader";
 import { Toaster } from "@/ui/toaster";
+import { getServerSession } from "next-auth";
+import NextAuthProvider from "@/app/providers/next-auth-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,27 +24,30 @@ interface RootLayoutProps {
   };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params: { locale },
 }: Readonly<RootLayoutProps>) {
+  const session = await getServerSession();
   return (
     <html lang={locale}>
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme={DefaultThemes["light"]}
-          enableSystem
-          themes={Themes}
-        >
-          <TooltipProvider>
-            <NextIntlClientProviderWrapper locale={locale}>
-              <NextTopLoader />
-              {children}
-              <Toaster />
-            </NextIntlClientProviderWrapper>
-          </TooltipProvider>
-        </ThemeProvider>
+        <NextAuthProvider session={session}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme={DefaultThemes["light"]}
+            enableSystem
+            themes={Themes}
+          >
+            <TooltipProvider>
+              <NextIntlClientProviderWrapper locale={locale}>
+                <NextTopLoader />
+                {children}
+                <Toaster />
+              </NextIntlClientProviderWrapper>
+            </TooltipProvider>
+          </ThemeProvider>
+        </NextAuthProvider>
       </body>
     </html>
   );
