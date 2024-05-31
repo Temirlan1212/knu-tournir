@@ -19,8 +19,8 @@ export default function Processes() {
   const prev = useProcessesStore(selectProcessPrev);
 
   const handleSignupSuccess = () => {
-    startCountdown();
-    next();
+    // startCountdown();
+    // next();
   };
 
   return (

@@ -9,7 +9,7 @@ export const registrationDto = z
   .object({
     inputName: zodRequiredField(),
     inputEmail: zodRequiredField().email(zodMessages.validEmail),
-    inputPhone: zodRequiredField(),
+    inputLastname: zodRequiredField(),
     inputPassword: zodValidateMinMax(6, 1000),
     inputPasswordConfirm: zodValidateMinMax(6, 1000),
   })

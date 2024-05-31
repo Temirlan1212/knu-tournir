@@ -40,12 +40,13 @@ export default function RegistrationForm({
                 )}
               />
             </div>
+
             <div className="grid gap-2">
               <FormField
                 control={form.control}
-                name="inputEmail"
+                name="inputLastname"
                 render={(props) => (
-                  <FormFloatingLabelInput label="Почта *" {...props} />
+                  <FormFloatingLabelInput label="Фамилия *" {...props} />
                 )}
               />
             </div>
@@ -53,9 +54,9 @@ export default function RegistrationForm({
             <div className="grid gap-2">
               <FormField
                 control={form.control}
-                name="inputPhone"
+                name="inputEmail"
                 render={(props) => (
-                  <FormFloatingLabelInput label="Телефон *" {...props} />
+                  <FormFloatingLabelInput label="Почта *" {...props} />
                 )}
               />
             </div>
