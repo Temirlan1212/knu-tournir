@@ -24,6 +24,8 @@ export const paths = {
   register: "/register",
   restorePassword: "/restore-password",
   createProject: "/create-project",
+  about: "/about",
+  contacts: "/contacts",
   dashboard: dashboardPaths,
 
   // Get the URL for the movie catalog page
