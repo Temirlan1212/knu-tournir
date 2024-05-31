@@ -29,7 +29,7 @@ export default function RegistrationCard({
       inputEmail: "",
       inputPassword: "",
       inputName: "",
-      inputPhone: "",
+      inputLastname: "",
       inputPasswordConfirm: "",
     },
   });
