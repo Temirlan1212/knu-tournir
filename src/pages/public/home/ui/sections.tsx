@@ -12,7 +12,7 @@ const Page = () => {
 
       <div className="py-[30px] h-auto">
         <HeroSection />
-        <div className="flex flex-col gap-y-[170px]">
+        <div className="flex flex-col gap-y-[50px] sm:gap-y-[170px]">
           <SecondSection />
           <ThirdSection />
           <FourthSection />
