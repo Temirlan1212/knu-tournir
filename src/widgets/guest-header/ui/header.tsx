@@ -15,7 +15,7 @@ export default function Header({ className }: { className?: string }) {
     >
       <nav className="flex h-12 items-center justify-between">
         <Link href={paths.home}>
-          <Logo />
+          <Logo>InoPay</Logo>
         </Link>
 
         <div className="flex gap-[20px] sm:gap-[40px] items-center">
