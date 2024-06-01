@@ -35,10 +35,9 @@ export default function LoginCard() {
     try {
       const res = await signIn("credentials", { ...data, redirect: false });
       if (res?.ok) {
-        router.push(paths.dashboard.manage);
+        router.push(paths.dashboard.payments);
         router.refresh();
       }
-      console.log(res);
 
       if (!res?.ok) {
         toast({

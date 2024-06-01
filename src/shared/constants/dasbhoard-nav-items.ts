@@ -20,12 +20,12 @@ export const DashboardNavItems: INavItem[] = [
     path: { pathname: dashboardPaths.manage },
     color: "text-500",
   },
-  {
-    title: "Поиск",
-    icon: Search,
-    path: { query: "sidebar=search" },
-    color: "text-500",
-  },
+  // {
+  //   title: "Поиск",
+  //   icon: Search,
+  //   path: { query: "sidebar=search" },
+  //   color: "text-500",
+  // },
   // {
   //   title: "Проекты",
   //   icon: Folder,
@@ -46,13 +46,13 @@ export const DashboardNavItems: INavItem[] = [
     color: "text-500",
     isChidren: false,
   },
-  {
-    title: "Поддержка",
-    icon: MessageSquareMore,
-    path: { pathname: dashboardPaths.support },
-    color: "text-500",
-    position: "bottom",
-  },
+  // {
+  //   title: "Поддержка",
+  //   icon: MessageSquareMore,
+  //   path: { pathname: dashboardPaths.support },
+  //   color: "text-500",
+  //   position: "bottom",
+  // },
   {
     title: "Настройки",
     icon: Settings,
