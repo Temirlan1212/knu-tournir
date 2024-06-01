@@ -122,8 +122,10 @@ export default function Page() {
                       <SelectValue placeholder="Выберите статус" />
                     </SelectTrigger>
                     <SelectContent>
-                      {statuses.map(({ value, label }) => (
-                        <SelectItem value={value}>{label}</SelectItem>
+                      {statuses.map(({ value, label }, index) => (
+                        <SelectItem key={index} value={value}>
+                          {label}
+                        </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
