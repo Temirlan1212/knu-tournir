@@ -1,6 +1,7 @@
 import { type INavItem } from "@/widgets/sidebar/model/types/sidebar";
 import {
   BookOpen,
+  CircleDollarSign,
   Folder,
   Home,
   List,
@@ -35,6 +36,13 @@ export const DashboardNavItems: INavItem[] = [
     title: "Аккаунты",
     icon: Users,
     path: { pathname: dashboardPaths.accounts },
+    color: "text-500",
+    isChidren: false,
+  },
+  {
+    title: "Транзакции",
+    icon: CircleDollarSign,
+    path: { pathname: dashboardPaths.payments },
     color: "text-500",
     isChidren: false,
   },
