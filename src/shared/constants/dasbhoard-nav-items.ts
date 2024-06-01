@@ -8,6 +8,7 @@ import {
   Pipette,
   Search,
   Settings,
+  Users,
 } from "lucide-react";
 import { dashboardPaths } from "@/shared/routing";
 
@@ -24,26 +25,18 @@ export const DashboardNavItems: INavItem[] = [
     path: { query: "sidebar=search" },
     color: "text-500",
   },
+  // {
+  //   title: "Проекты",
+  //   icon: Folder,
+  //   path: { pathname: dashboardPaths.projects },
+  //   color: "text-500",
+  // },
   {
-    title: "Проекты",
-    icon: Folder,
-    path: { pathname: dashboardPaths.projects },
+    title: "Аккаунты",
+    icon: Users,
+    path: { pathname: dashboardPaths.accounts },
     color: "text-500",
-  },
-  {
-    title: "Курсы",
-    icon: BookOpen,
-    path: { pathname: dashboardPaths.courses },
-    color: "text-500",
-    isChidren: true,
-    children: [
-      {
-        title: "Список курсов",
-        icon: List,
-        color: "text-500",
-        path: { pathname: dashboardPaths.coursesList },
-      },
-    ],
+    isChidren: false,
   },
   {
     title: "Поддержка",

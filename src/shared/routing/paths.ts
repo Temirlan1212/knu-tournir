@@ -16,6 +16,7 @@ export const dashboardPaths = {
   settings: "/dashboard/settings",
   settingsTheme: "/dashboard/settings/theme",
   support: "/dashboard/support",
+  accounts: "/dashboard/accounts",
 };
 
 export const paths = {
