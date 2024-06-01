@@ -13,6 +13,7 @@ import { Card } from "@/shared/ui/card";
 import { AuthCardHeader } from "@/entities/auth-card-header";
 import { paths } from "@/shared/routing";
 import { signIn } from "next-auth/react";
+import { toast } from "@/ui/use-toast";
 
 export default function LoginCard() {
   const setLoading = useLoginStore(selectLoginSetLoading);
@@ -21,8 +22,8 @@ export default function LoginCard() {
   const form = useForm<LoginDto>({
     resolver: zodResolver(loginDto),
     defaultValues: {
-      inputEmail: "",
-      inputPassword: "",
+      email: "",
+      password: "",
     },
   });
 
@@ -36,6 +37,15 @@ export default function LoginCard() {
       if (res?.ok) {
         router.push(paths.dashboard.manage);
         router.refresh();
+      }
+      console.log(res);
+
+      if (!res?.ok) {
+        toast({
+          variant: "destructive",
+          title: "Пользователь найден",
+          description: res?.error || "Вы не авторизовались!",
+        });
       }
     } catch (error) {
       console.error(error);

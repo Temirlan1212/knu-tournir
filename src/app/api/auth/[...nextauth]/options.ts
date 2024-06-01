@@ -5,6 +5,7 @@ declare module "next-auth" {
   interface User {
     email?: string | null;
     reason?: string | null;
+    access?: string | null;
   }
 }
 
@@ -13,6 +14,7 @@ declare module "next-auth" {
     user?: {
       email?: string | null;
       reason?: string | null;
+      access?: string | null;
     } & DefaultSession["user"];
   }
 }
@@ -35,13 +37,21 @@ export const options: NextAuthOptions = {
         const { password, email } = credentials as any;
 
         try {
-          // const res = await fetch("https://restful-booker.herokuapp.com/auth", {
-          //   method: "POST",
-          //   body: JSON.stringify({ email, password }),
-          //   cache: "no-cache",
-          // });
-          // const user = await res.json();
-          return { email: "tima@gmail.com", reason: "no reason" } as any;
+          const res = await fetch(`${process.env.API_URL}/accounts/login/`, {
+            method: "POST",
+            body: JSON.stringify({ email, password }),
+            cache: "no-cache",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const user = await res.json();
+
+          if (user?.access) {
+            return { ...user, email };
+          } else {
+            if (user?.detail) throw new Error(user?.detail);
+          }
         } catch (error: any) {
           throw new Error(error);
         }
@@ -53,6 +63,7 @@ export const options: NextAuthOptions = {
       if (user) {
         token.email = user.email;
         token.reason = user.reason;
+        token.access = user.access;
       }
 
       return Promise.resolve(token);

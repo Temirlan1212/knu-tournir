@@ -27,7 +27,7 @@ export default function LoginForm({ onSubmit, ...form }: LoginFormProps) {
             <div className="grid gap-2">
               <FormField
                 control={form.control}
-                name="inputEmail"
+                name="email"
                 render={(props) => (
                   <FormFloatingLabelInput label="Почта *" {...props} />
                 )}
@@ -36,7 +36,7 @@ export default function LoginForm({ onSubmit, ...form }: LoginFormProps) {
             <div className="grid gap-2">
               <FormField
                 control={form.control}
-                name="inputPassword"
+                name="password"
                 render={(props) => (
                   <FormFloatingPasswordLabelInput label="Пароль *" {...props} />
                 )}
