@@ -12,6 +12,7 @@ import { RegistrationDto } from "../model/types/registration";
 import { registrationDto } from "../model/dto/registration";
 import { AuthCardHeader } from "@/entities/auth-card-header";
 import { paths } from "@/shared/routing";
+import { toast } from "@/ui/use-toast";
 
 interface RegistrationCardProps {
   onSubmitSuccess?: () => void;
@@ -26,11 +27,11 @@ export default function RegistrationCard({
   const form = useForm<RegistrationDto>({
     resolver: zodResolver(registrationDto),
     defaultValues: {
-      inputEmail: "",
-      inputPassword: "",
-      inputName: "",
-      inputLastname: "",
-      inputPasswordConfirm: "",
+      first_name: "",
+      last_name: "",
+      email: "",
+      password: "",
+      password2: "",
     },
   });
 
@@ -38,6 +39,46 @@ export default function RegistrationCard({
 
   async function onSubmit(data: RegistrationDto) {
     setLoading("loading");
+
+    const res = await fetch(`api/auth/register`, {
+      method: "POST",
+      body: JSON.stringify(data),
+      cache: "no-cache",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      const email = data?.data?.email;
+      const non_field_errors = data?.data?.non_field_errors;
+      if (Array.isArray(non_field_errors)) {
+        const errors = non_field_errors.join(" | ");
+        toast({
+          variant: "destructive",
+          title: "Неправильный ввод!",
+          description: errors || "Вы не зарегестрировались!",
+        });
+      } else {
+        if (Array.isArray(email)) {
+          toast({
+            variant: "destructive",
+            title: "Такой пользователь уже существует",
+            description: email?.[0] || "Вы не зарегестрировались!",
+          });
+        } else {
+          toast({
+            variant: "default",
+            title: "Посмотрите почту!",
+            description:
+              "Вам была отправлена ссылка активации на почту, активируйте пожалуйста!",
+          });
+          form.reset();
+        }
+      }
+    }
+
     onSubmitSuccess && onSubmitSuccess();
     setLoading("loaded");
   }

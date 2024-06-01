@@ -43,7 +43,7 @@ export default function LoginCard() {
       if (!res?.ok) {
         toast({
           variant: "destructive",
-          title: "Пользователь найден",
+          title: "Пользователь не найден!",
           description: res?.error || "Вы не авторизовались!",
         });
       }
