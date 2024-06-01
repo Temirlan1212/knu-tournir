@@ -1,6 +1,7 @@
-import { formatISODate } from "@/shared/lib/helpers/date";
+import { formatISODateToDDMMYYYY } from "@/shared/lib/helpers/date";
 import { Payment } from "@/shared/types/global";
 import { ColumnDef } from "@tanstack/react-table";
+import { StatusCard } from "./payments-table-data";
 
 const columns: ColumnDef<Payment>[] = [
   {
@@ -17,7 +18,9 @@ const columns: ColumnDef<Payment>[] = [
     header: () => <div className="text-right">Статус</div>,
     cell: ({ row }) => {
       return (
-        <div className="text-right font-medium">{row.getValue("status")}</div>
+        <div className="flex w-full justify-end">
+          <StatusCard status={row.getValue("status")} />
+        </div>
       );
     },
   },
@@ -27,7 +30,7 @@ const columns: ColumnDef<Payment>[] = [
     cell: ({ row }) => {
       return (
         <div className="text-right font-medium">
-          {formatISODate(row.getValue("created_at"))}
+          {formatISODateToDDMMYYYY(row.getValue("created_at"))}
         </div>
       );
     },
@@ -38,7 +41,7 @@ const columns: ColumnDef<Payment>[] = [
     cell: ({ row }) => {
       return (
         <div className="text-right font-medium">
-          {formatISODate(row.getValue("updated_at"))}
+          {formatISODateToDDMMYYYY(row.getValue("updated_at"))}
         </div>
       );
     },

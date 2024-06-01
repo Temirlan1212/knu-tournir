@@ -1,5 +1,5 @@
-'use client';
-import * as React from 'react';
+"use client";
+import * as React from "react";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -13,7 +13,7 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-} from '@tanstack/react-table';
+} from "@tanstack/react-table";
 import {
   Table,
   TableBody,
@@ -21,8 +21,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/ui/table';
-import { TableProps } from './row-control-menu';
+} from "@/ui/table";
+import { TableProps } from "./row-control-menu";
 
 export interface IDataTableProps {
   data: any[];
@@ -36,7 +36,7 @@ export interface IDataTableProps {
     headerRightBlock?: (table: TableProps<any>) => React.ReactNode;
   };
   onRowSelectionChange?: (value: RowSelectionState | undefined) => void;
-  onOrigininalRowSelectionChange?: (value: CoreRow<any>['original'][]) => void;
+  onOrigininalRowSelectionChange?: (value: CoreRow<any>["original"][]) => void;
 }
 
 export function DataTable({
@@ -61,7 +61,7 @@ export function DataTable({
   const table = useReactTable({
     data: data,
     columns: columns as any,
-    getRowId: (row) => row?.[rest.fields?.getRowIdField || 'id'] || rowId,
+    getRowId: (row) => row?.[rest.fields?.getRowIdField || "id"] || rowId,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
@@ -70,6 +70,8 @@ export function DataTable({
     getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
+    pageCount: 1000,
+    rowCount: 1000,
     state: {
       sorting: sorting,
       columnFilters,
@@ -88,7 +90,7 @@ export function DataTable({
 
   return (
     <div className="w-full">
-      <div className="flex items-center pb-4 justify-between gap-2 flex-wrap">
+      <div className="flex items-center pb-4 justify-between gap-2 gap-y-4 flex-wrap">
         <div className="max-w-full w-full md:w-[fit-content]">
           {slots?.headerLeftBlock && slots?.headerLeftBlock(table)}
         </div>
@@ -117,11 +119,11 @@ export function DataTable({
             ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
+            {table.getCoreRowModel().rows?.length ? (
+              table.getCoreRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
-                  data-state={row.getIsSelected() && 'selected'}
+                  data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>

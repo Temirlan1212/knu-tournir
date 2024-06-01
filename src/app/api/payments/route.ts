@@ -14,7 +14,9 @@ export async function POST(req: Request) {
   status && params.append("status", String(status));
 
   try {
-    const res = await fetch(`${process.env.API_URL}/payments?${params}/`, {
+    const url = `${process.env.API_URL}/payments/?${params}`;
+
+    const res = await fetch(url, {
       method: "GET",
       cache: "no-cache",
       headers: {

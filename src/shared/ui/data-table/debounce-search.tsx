@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 import { Button } from "../button";
 
-export interface SearchProps extends Pick<InputProps, "placeholder"> {
+export interface SearchProps extends Pick<InputProps, "placeholder" | "type"> {
   debounceDelay?: number;
   loading?: boolean;
   onDebounceChange?: (value: string) => void;
