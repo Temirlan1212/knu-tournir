@@ -14,12 +14,12 @@ import {
 import { dashboardPaths } from "@/shared/routing";
 
 export const DashboardNavItems: INavItem[] = [
-  {
-    title: "Главная",
-    icon: Home,
-    path: { pathname: dashboardPaths.manage },
-    color: "text-500",
-  },
+  // {
+  //   title: "Главная",
+  //   icon: Home,
+  //   path: { pathname: dashboardPaths.manage },
+  //   color: "text-500",
+  // },
   // {
   //   title: "Поиск",
   //   icon: Search,
@@ -32,13 +32,13 @@ export const DashboardNavItems: INavItem[] = [
   //   path: { pathname: dashboardPaths.projects },
   //   color: "text-500",
   // },
-  {
-    title: "Аккаунты",
-    icon: Users,
-    path: { pathname: dashboardPaths.accounts },
-    color: "text-500",
-    isChidren: false,
-  },
+  // {
+  //   title: "Аккаунты",
+  //   icon: Users,
+  //   path: { pathname: dashboardPaths.accounts },
+  //   color: "text-500",
+  //   isChidren: false,
+  // },
   {
     title: "Транзакции",
     icon: CircleDollarSign,
