@@ -31,7 +31,7 @@ export default function RestorePasswordForm({
             <div className="grid gap-2">
               <FormField
                 control={form.control}
-                name="inputEmail"
+                name="email"
                 render={(props) => (
                   <FormFloatingLabelInput label="Почта *" {...props} />
                 )}
@@ -45,7 +45,7 @@ export default function RestorePasswordForm({
               loading={loading === "loading"}
               size="lg"
             >
-              Сменить пароль
+              Дальше
             </Button>
             <NavigateBackIcon
               type="button"

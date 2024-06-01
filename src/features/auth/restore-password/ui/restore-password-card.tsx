@@ -9,28 +9,57 @@ import { Card, CardContent } from "@/shared/ui/card";
 import { AuthCardHeader } from "@/entities/auth-card-header";
 import RestorePasswordForm from "./restore-password-form";
 import { useRestorePasswordStore } from "../model/store/restore-password";
+import { toast } from "@/ui/use-toast";
 
 interface RestorePasswordProps {
-  onSubmitSuccess?: () => void;
+  onSubmitSuccess?: (v: RestorePasswordDto) => void;
+  email?: string;
 }
 
 export default function RestorePassword({
   onSubmitSuccess,
+  email,
 }: RestorePasswordProps) {
   const setLoading = useRestorePasswordStore(selectRestorePasswordSetLoading);
 
   const form = useForm<RestorePasswordDto>({
     resolver: zodResolver(restorePasswordDto),
     defaultValues: {
-      inputEmail: "",
+      email: email || "",
     },
   });
 
   const { setError } = form;
 
-  async function onSubmit(data: RestorePasswordDto) {
+  async function onSubmit(formData: RestorePasswordDto) {
     setLoading("loading");
-    onSubmitSuccess && onSubmitSuccess();
+
+    const res = await fetch(`api/auth/reset-request`, {
+      method: "POST",
+      body: JSON.stringify(formData),
+      cache: "no-cache",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await res.json();
+    const email = data?.data?.email;
+
+    if (Array.isArray(email)) {
+      toast({
+        variant: "destructive",
+        title: "Такой пользователь не найден!",
+        description: email?.[0] || "Вы не зарегестрировались!",
+      });
+    } else {
+      toast({
+        variant: "default",
+        title: "Посмотрите почту!",
+        description: "Вам был отправлен код на почту!",
+      });
+      onSubmitSuccess && onSubmitSuccess(formData);
+    }
     setLoading("loaded");
   }
 
